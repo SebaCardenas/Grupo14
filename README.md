@@ -4,9 +4,9 @@
 
 | Nombre | Github | Email |
 | :----- | :----- | :------- |
-| SEBASTIÁN ANDRÉS CÁRDENAS | X | sacardenas@uc.cl |
+| SEBASTIÁN ANDRÉS CÁRDENAS | SebaCardenas | sacardenas@uc.cl |
 | FELIPE IGNACIO MATUS | matusfelipe | fgmatus@uc.cl |
-| LUKAS SVICAROVIC | X | lsvicarovic@uc.cl |
+| LUKAS SVICAROVIC | lukassr | lsvicarovic@uc.cl |
 
 ## Product Owner
 | Nombre | Github | Email |
