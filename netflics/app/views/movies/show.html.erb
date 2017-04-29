@@ -27,9 +27,9 @@ country.translations[I18n.locale.to_s] || country.name %>
   <strong>Director:</strong>
   <%= @movie.director %>
 </p>
-<<<<<<< HEAD
-<% if can? :update, Movie %>
-=======
+
+
+
 
 <p>
   <strong>Number of chapters:</strong>
@@ -51,7 +51,7 @@ country.translations[I18n.locale.to_s] || country.name %>
   <%= @movie.finish_year %>
 </p>
 
->>>>>>> origin/development
+<% if can? :update, Movie %>
 <%= link_to 'Edit', edit_movie_path(@movie), :class => "btn btn-primary"  %>
 <% end %>
 <% if can? :destroy, Movie %>
