@@ -9,7 +9,11 @@
 		<h2><%= link_to movie.title, movie %></h2>
 	<% end %>
 <% else %>
+<<<<<<< HEAD
 	<p>The Database is empty! </p>
+=======
+	<p>The Database is empty! Add a new movie with the button below</p>
+>>>>>>> origin/development
 <% end %>
 <% if can? :update, Movie %>
 <%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"  %>
