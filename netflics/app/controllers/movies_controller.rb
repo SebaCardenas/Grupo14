@@ -1,8 +1,6 @@
 class MoviesController < ApplicationController
-<<<<<<< HEAD
   load_and_authorize_resource
-=======
->>>>>>> origin/development
+
 
   def index
       #@movies = Movie.all
@@ -30,7 +28,7 @@ class MoviesController < ApplicationController
   end
 
   def create
-<<<<<<< HEAD
+
     #@movie.user_id = current_user.id
     # @movie = Movie.new(movie_params)
     #
@@ -40,28 +38,14 @@ class MoviesController < ApplicationController
      else
        render 'new'
      end
-=======
 
-    @movie = Movie.new(movie_params)
-    if @movie.save
-      redirect_to @movie
 
-    else
-      render 'new'
-    end
-    puts @movie.title
-    puts @movie.country
-    puts @movie.description
->>>>>>> origin/development
+
   end
 
   private
 
-<<<<<<< HEAD
-     def movie_params
-       params.require(:movie).permit(:title, :description, :director)
-     end
-=======
+
     def movie_params
       params.require(:movie).permit(:title, :description, :category, :country,
       :language, :actor, :director, :n_chapter, :n_season, :start_year,
