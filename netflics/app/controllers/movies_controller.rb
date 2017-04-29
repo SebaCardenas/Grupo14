@@ -52,5 +52,4 @@ class MoviesController < ApplicationController
       :finish_year, :date_update)
     end
 
->>>>>>> origin/development
 end
