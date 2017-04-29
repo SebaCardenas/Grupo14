@@ -2,29 +2,17 @@
 <html>
 
 
+<h1>Available Series</h1>
 
-<head>
-  <title>Netflics</title>
-</head>
+<% if @movies.any? %>
+  	<% @movies.each do |movie| %>
+		<h2><%= link_to movie.title, movie %></h2>
+	<% end %>
+<% else %>
+	<p>The Database is empty! Add a new serie with the button below</p>
+<% end %>
 
-<nav class="navbar navbar-default">
-
-<div class="container">
-  <div class="navbar-header">
-      <%= link_to "Netflics", root_path, class: "navbar-brand" %>
-  </div>
-  <ul class="nav navbar-nav">
-    <% if user_signed_in? %>
-    <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
-    <% end %>
-
-  </ul>
-</div>
-
-
-
-</nav>
-
+<%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"  %>
 
 
 

@@ -3,11 +3,27 @@ class MoviesController < ApplicationController
 
   def index
     if user_signed_in?
-      @movies = Movie.all.order("create_at DESC")
+      @movies = Movie.all
     else
       redirect_to "/login"
     end
 
+  end
+
+  def show
+    @movie = Movie.find(params[:id])
+  end
+
+  def edit
+    @movie = Movie.find(params[:id])
+    render 'edit'
+  end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+
+    redirect_to movies_path
 
   end
 
@@ -19,7 +35,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to root_path
+      redirect_to @movie
 
     else
       render 'new'

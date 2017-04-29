@@ -20,8 +20,8 @@ private
   # the session is destroyed on log out, we need to use request.referrer
   # root_path is there as a backup
   def after_sign_out_path_for(resource)
-    request.referrer || root_path
+    root_path
   end
-  
+
 
 end

@@ -1,0 +1,24 @@
+<h1>
+  <strong><%= @movie.title %></strong>
+</h1>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @movie.description %>
+</p>
+
+<p>
+  <strong>Director:</strong>
+  <%= @movie.director %>
+</p>
+
+<%= link_to 'Edit', edit_movie_path(@movie), :class => "btn btn-primary"  %>
+
+<%= link_to 'Delete', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
+
+<br><br>
+
+<%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
+
+
+
