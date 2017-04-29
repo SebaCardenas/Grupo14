@@ -1,6 +1,11 @@
+<h1> Creating a new series </h1>
+
 <%= simple_form_for @movie do |f| %>
   <%= f.input :title, label: "Series Title" %>
   <%= f.input :description %>
   <%= f.input :director %>
-  <%= f.button :submit %>
+  <%= f.button :submit, :class => "btn btn-primary"  %>
 <% end %>
+ 
+ <br>
+<%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>

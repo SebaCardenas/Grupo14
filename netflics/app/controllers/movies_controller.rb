@@ -1,6 +1,22 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all.order("create_at DESC")
+    @movies = Movie.all
+  end
+
+  def show
+    @movie = Movie.find(params[:id])    
+  end
+  
+  def edit
+    @movie = Movie.find(params[:id])
+    render 'edit'
+  end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    @movie.destroy
+   
+    redirect_to movies_path
   end
 
   def new
@@ -11,7 +27,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to root_path
+      redirect_to @movie
 
     else
       render 'new'

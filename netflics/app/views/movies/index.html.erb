@@ -1,4 +1,14 @@
-<% @movies.each do |movie| %>
+<h1>Available Series</h1>
 
-<h2><%= movie.title %></h2>
+<% if @movies.any? %>
+  	<% @movies.each do |movie| %>
+		<h2><%= link_to movie.title, movie %></h2>
+	<% end %>
+<% else %>
+	<p>The Database is empty! Add a new serie with the button below</p>
 <% end %>
+
+<%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"  %>
+
+ 
+
