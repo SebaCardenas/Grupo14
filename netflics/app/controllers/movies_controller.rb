@@ -1,5 +1,8 @@
 class MoviesController < ApplicationController
+
+
   def index
+<<<<<<< HEAD
     @movies = Movie.all
   end
 
@@ -17,6 +20,15 @@ class MoviesController < ApplicationController
     @movie.destroy
    
     redirect_to movies_path
+=======
+    if user_signed_in?
+      @movies = Movie.all.order("create_at DESC")
+    else
+      redirect_to "/login"
+    end
+
+
+>>>>>>> login
   end
 
   def new
