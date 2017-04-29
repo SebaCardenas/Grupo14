@@ -3,7 +3,7 @@
   <%= f.input :title, label: "Series Title" %>
   <%= f.input :description %>
   <%= f.input :category %>
-  <%= f.input :country, as: :country %>
+  <%= f.input :country, priority: [ "Chile" ] %>
   <%= f.input :language%>
   <%= f.input :actor %>
   <%= f.input :director %>
@@ -11,7 +11,7 @@
   <%= f.input :n_season, label: "Number of Seasons" %>
   <%= f.input :start_year, label: "Start Year" %>
   <%= f.input :finish_year, label: "Finish Year" %>
-  <%= f.button :submit, label: "Create Series", :class => "btn btn-primary"  %>
+  <%= f.button :submit,  "Create Series", :class => "btn btn-primary"  %>
 <% end %>
  
 

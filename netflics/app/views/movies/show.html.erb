@@ -1,7 +1,7 @@
 <h1>
   <strong><%= @movie.title %></strong>
 </h1>
- 
+
 <p>
   <strong>Description:</strong>
   <%= @movie.description %>
@@ -14,7 +14,8 @@
 
 <p>
   <strong>Country:</strong>
-  <%= @movie.country %>
+  <%=  country = ISO3166::Country[@movie.country]
+country.translations[I18n.locale.to_s] || country.name %>
 </p>
 
 <p>
@@ -26,6 +27,9 @@
   <strong>Director:</strong>
   <%= @movie.director %>
 </p>
+
+
+
 
 <p>
   <strong>Number of chapters:</strong>
@@ -47,13 +51,13 @@
   <%= @movie.finish_year %>
 </p>
 
+<% if can? :update, Movie %>
 <%= link_to 'Edit', edit_movie_path(@movie), :class => "btn btn-primary"  %>
-
+<% end %>
+<% if can? :destroy, Movie %>
 <%= link_to 'Delete', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
+<% end %>
 
 <br><br>
 
 <%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
-
-
-
