@@ -7,12 +7,14 @@ class Ability
     user ||= User.create(role: "guest") # guest user (not logged in)
     if user.admin?
       can :manage, :all
+      can :update, :all
+      can :destroy, :all
+      can :create, :all
 
     elsif user.common?
       can :read, :all
       can :create, Movie
       can :update, :all
-
       can :destroy, :all
 
     elsif user.child?
