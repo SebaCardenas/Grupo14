@@ -1,6 +1,5 @@
 class MoviesController < ApplicationController
 
-
   def index
     if user_signed_in?
       @movies = Movie.all
@@ -32,6 +31,7 @@ class MoviesController < ApplicationController
   end
 
   def create
+
     @movie = Movie.new(movie_params)
 
     if @movie.save
@@ -45,6 +45,9 @@ class MoviesController < ApplicationController
   private
 
     def movie_params
-      params.require(:movie).permit(:title, :description, :director)
+      params.require(:movie).permit(:title, :description, :category,
+      :language, :actor, :director, :n_chapter, :n_season, :start_year,
+      :finish_year, :date_update)
     end
+
 end

@@ -8,8 +8,43 @@
 </p>
 
 <p>
+  <strong>Category:</strong>
+  <%= @movie.category %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @movie.country %>
+</p>
+
+<p>
+  <strong>Actor:</strong>
+  <%= @movie.actor %>
+</p>
+
+<p>
   <strong>Director:</strong>
   <%= @movie.director %>
+</p>
+
+<p>
+  <strong>Number of chapters:</strong>
+  <%= @movie.n_chapter %>
+</p>
+
+<p>
+  <strong>Number of seasons:</strong>
+  <%= @movie.n_season %>
+</p>
+
+<p>
+  <strong>Start Year:</strong>
+  <%= @movie.start_year %>
+</p>
+
+<p>
+  <strong>Finish Year:</strong>
+  <%= @movie.finish_year %>
 </p>
 
 <%= link_to 'Edit', edit_movie_path(@movie), :class => "btn btn-primary"  %>
