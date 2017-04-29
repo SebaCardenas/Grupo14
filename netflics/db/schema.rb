@@ -10,11 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
+
 ActiveRecord::Schema.define(version: 20170429221428) do
-=======
-ActiveRecord::Schema.define(version: 20170429212457) do
->>>>>>> origin/development
+
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
