@@ -22,11 +22,14 @@ ActiveRecord::Schema.define(version: 20170429152031) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "lastname"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer  "role",                   default: 0,  null: false
     t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"

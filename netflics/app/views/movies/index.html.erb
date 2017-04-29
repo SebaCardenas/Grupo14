@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html>
-<nav class="navbar navbar-default">
 
-<div class="container">
-  <div class="navbar-header">
-      <%= link_to "Netflics", root_path, class: "navbar-brand" %>
-  </div>
-  <ul class="nav navbar-nav">
-    <% if user_signed_in? %>
-    <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
-    <% end %>
-
-  </ul>
-</div>
-</nav>
 
 <h1>Available Series</h1>
 
