@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 # right page. If we're on a devise page, we don't want to store that as the
 # place to return to (for example, we don't want to return to the sign in page
 # after signing in), which is what the :unless prevents
+
 before_action :store_current_location, :unless => :devise_controller?
 
 private
@@ -23,5 +24,20 @@ private
     root_path
   end
 
+# before_filter :configure_permitted_parameters, if: :devise_controller?
+# protected
+# def configure_permitted_parameters
+#   devise_parameter_sanitizer.for(:sign_up) << :name
+#   devise_parameter_sanitizer.for(:account_update) << :name
+#   devise_parameter_sanitizer.for(:sign_up) << :lastname
+#   devise_parameter_sanitizer.for(:account_update) << :lastname
+#   devise_parameter_sanitizer.for(:sign_up) << :role
+#   devise_parameter_sanitizer.for(:account_update) << :role
+# end
+
+rescue_from CanCan::AccessDenied do |exception|
+  flash[:error] = "Access denied!"
+  redirect_to root_url
+end
 
 end
