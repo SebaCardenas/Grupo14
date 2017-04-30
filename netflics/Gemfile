@@ -6,7 +6,7 @@ gem 'rails'
 # Use sqlite3 as the database for Active Record
 
 group :production do
-  gem 'pg'
+  gem 'mysql'
 end
 gem 'cancancan'
 # Use Puma as the app server
@@ -40,7 +40,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 
-  gem 'mysql'
+  gem 'sqlite3'
 end
 
 group :development do
