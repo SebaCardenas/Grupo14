@@ -53,4 +53,6 @@ Para un mejor desarrollo de nuestra plataforma web, se utilizaron distintas Gema
 
 Los logros alcanzados fueron todos los propuestos al inicio del sprint incluyendo los tres bonus mencionado por nuestro product-owner. Se puede iniciar sesion y como usuario se puede hacer CRUD de la cuenta, además de tener la diferenciación entre guest, child & common. Se puede agregar series con distintos campos y hacer CRUD de estas. Existen algunas restricciones según tipo de usuario. Si es del tipo guest, no puede agregar series. También existe una vista principal en la interfaz, donde aparecen las series ya creadas.
 
+la aplicacion se puede ver en heroku: **https://obscure-castle-13714.herokuapp.com/**
+
 
