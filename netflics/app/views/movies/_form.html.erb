@@ -1,8 +1,8 @@
 
 <%= simple_form_for @movie do |f| %>
-  <!-- <%= select_tag(:category_id, options_for_select(@categories),
-  :prompt => "Select a Category") %> -->
-  <%= f.select :category_id, @categories %>
+  <%= select_tag(:category_id, options_for_select(@categories),
+  :prompt => "Select a Category") %>
+  <!-- <%= f.select :category_id, @categories %> -->
   <%= f.input :title, label: "Series Title" %>
   <%= f.input :description %>
   <%= f.input :country, priority: [ "Chile" ] %>
