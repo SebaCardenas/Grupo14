@@ -4,10 +4,16 @@
 
 <h1>Available Series</h1>
 
+<% if can? :update, Movie %>
+<div>
+  <%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"%>
+</div>
+<%end %>
+
 <% if @movies.any? %>
   	<% @movies.each do |movie| %>
       <a href="/movies/<%= movie.id %>">
-        <%= image_tag movie.movie_img.url(:movie_index)%>
+        <%= image_tag movie.movie_img.url(:movie_index), class: "movie"%>
       </a>
 		<!-- <h2><%= link_to movie.title, movie %></h2> -->
 	<% end %>
@@ -15,10 +21,5 @@
 	<p>The Database is empty! </p>
 
 <% end %>
-<% if can? :update, Movie %>
-<%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"  %>
-<%end %>
-
-
 
 </html>
