@@ -1,56 +1,62 @@
-<h1>
-  <strong><%= @movie.title %></strong>
-</h1>
+<div class: "row">
+  <div class: "col-md-4">
 
-<p>
-  <strong>Description:</strong>
-  <%= @movie.description %>
-</p>
+    <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
 
-<p>
-  <strong>Category:</strong>
-  <%= @movie.category.name %>
-</p>
+  </div>
 
-<p>
-  <strong>Country:</strong>
-  <%=  country = ISO3166::Country[@movie.country]
-country.translations[I18n.locale.to_s] || country.name %>
-</p>
+  <div class: "col-md-8">
+    <h1>
+      <strong><%= @movie.title %></strong>
+    </h1>
 
-<p>
-  <strong>Actor:</strong>
-  <%= @movie.actor %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @movie.description %>
+    </p>
 
-<p>
-  <strong>Director:</strong>
-  <%= @movie.director %>
-</p>
+    <p>
+      <strong>Category:</strong>
+      <%= @movie.category.name %>
+    </p>
 
+    <p>
+      <strong>Country:</strong>
+      <%=  country = ISO3166::Country[@movie.country]
+    country.translations[I18n.locale.to_s] || country.name %>
+    </p>
 
+    <p>
+      <strong>Actor:</strong>
+      <%= @movie.actor %>
+    </p>
 
+    <p>
+      <strong>Director:</strong>
+      <%= @movie.director %>
+    </p>
 
-<p>
-  <strong>Number of chapters:</strong>
-  <%= @movie.n_chapter %>
-</p>
+    <p>
+      <strong>Number of chapters:</strong>
+      <%= @movie.n_chapter %>
+    </p>
 
-<p>
-  <strong>Number of seasons:</strong>
-  <%= @movie.n_season %>
-</p>
+    <p>
+      <strong>Number of seasons:</strong>
+      <%= @movie.n_season %>
+    </p>
 
-<p>
-  <strong>Start Year:</strong>
-  <%= @movie.start_year %>
-</p>
+    <p>
+      <strong>Start Year:</strong>
+      <%= @movie.start_year %>
+    </p>
 
-<p>
-  <strong>Finish Year:</strong>
-  <%= @movie.finish_year %>
-</p>
-
+    <p>
+      <strong>Finish Year:</strong>
+      <%= @movie.finish_year %>
+    </p>
+  </div>
+</div>
 <% if can? :update, Movie %>
 <%= link_to 'Edit', edit_movie_path(@movie), :class => "btn btn-primary"  %>
 <% end %>

@@ -5,21 +5,26 @@
 <h1>Available Series</h1>
 
 <% if can? :update, Movie %>
-<div>
-  <%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"%>
-</div>
+  <div>
+    <%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"%>
+  </div>
 <%end %>
 
-<% if @movies.any? %>
-  	<% @movies.each do |movie| %>
+<div class:"row">
+
+  <% if @movies.any? %>
+
+    <% @movies.each do |movie| %>
       <a href="/movies/<%= movie.id %>">
         <%= image_tag movie.movie_img.url(:movie_index), class: "movie"%>
       </a>
-		<!-- <h2><%= link_to movie.title, movie %></h2> -->
-	<% end %>
-<% else %>
-	<p>The Database is empty! </p>
 
-<% end %>
+    	<% end %>
+
+  <% else %>
+  	<p>The Database is empty! </p>
+  <% end %>
+
+</div>
 
 </html>
