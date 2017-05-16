@@ -10,14 +10,17 @@
   </div>
 <%end %>
 
-<div class:"row">
+<div class="row">
 
   <% if @movies.any? %>
 
     <% @movies.each do |movie| %>
-      <a href="/movies/<%= movie.id %>">
-        <%= image_tag movie.movie_img.url(:movie_index), class: "movie"%>
-      </a>
+      <div class="div-order">
+        <a href="/movies/<%= movie.id %>">
+          <%= image_tag movie.movie_img.url(:movie_index), class: "movie"%>
+        </a>
+        <h4><%= movie.title%></h4>
+      </div>
 
     	<% end %>
 

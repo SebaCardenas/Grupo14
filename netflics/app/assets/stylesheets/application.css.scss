@@ -17,11 +17,21 @@
 @import "bootstrap";
 
 .movie{
-  height: 350px;
-  width: 250px;
+  height: 300px;
+  width: 200px;
 }
 
 .movie-show{
-  height: 475px;
-  width: 325px;
+  height: 425px;
+  width: 300px;
+}
+
+.div-order{
+  float: left;
+  margin: 5px;
+}
+
+.div-right{
+  // background: yellow;
+  text-align: right;
 }
