@@ -12,7 +12,7 @@ user.password = 'admin1'
 user.password_confirmation = 'admin1'
 user.save!
 
-category_list = ['Action', 'Horror', 'Comedy', 'Drama', 'Sci-Fi', 'Police', 'Kids']
+category_list = ['Other', 'Action', 'Horror', 'Comedy', 'Drama', 'Sci-Fi', 'Politics', 'Kids']
 
 category_list.each do |c|
   cat = Category.new
