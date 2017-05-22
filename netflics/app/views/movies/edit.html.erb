@@ -14,7 +14,7 @@
   <p>
     <%= f.label :category_id %><br>
     <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]},
-    {:include_blank => 'Select One'}, :class => "form-control",
+    :class => "form-control",
     onchange: 'populatesubs(this.value)'%>
   </p>
 
