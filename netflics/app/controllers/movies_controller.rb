@@ -31,19 +31,21 @@ class MoviesController < ApplicationController
 
   def new
     #@movie = Movie.new
+    @categories = Category.all.map { |c| [c.name, c.id] }
   end
 
   def create
 
     #@movie.user_id = current_user.id
-    # @movie = Movie.new(movie_params)
-    #
-     if @movie.save
-       redirect_to @movie
+    #@movie = Movie.new(movie_params)
+    @movie.category_id = params[:category_id]
 
-     else
-       render 'new'
-     end
+    if @movie.save
+      redirect_to @movie
+
+    else
+      render 'new'
+    end
 
 
 
@@ -53,9 +55,9 @@ class MoviesController < ApplicationController
 
 
     def movie_params
-      params.require(:movie).permit(:title, :description, :category, :country,
+      params.require(:movie).permit( :title, :description, :country,
       :language, :actor, :director, :n_chapter, :n_season, :start_year,
-      :finish_year, :date_update)
+      :finish_year, :date_update, :creator, :category_id, :movie_img)
     end
 
 end

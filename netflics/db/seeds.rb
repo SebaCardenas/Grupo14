@@ -11,3 +11,39 @@ user.name = 'admin'
 user.password = 'admin1'
 user.password_confirmation = 'admin1'
 user.save!
+
+category_list = ['Other', 'Action', 'Horror', 'Comedy', 'Drama', 'Sci-Fi', 'Politics', 'Kids']
+
+category_list.each do |c|
+  cat = Category.new
+  cat.name = c
+  cat.save!
+end
+
+# cat = Category.new
+# cat.name = 'Horror'
+# cat.save!
+#
+# cat = Category.new
+# cat.name = 'Fanrasy'
+# cat.save!
+#
+# cat = Category.new
+# cat.name = 'Comedy'
+# cat.save!
+#
+# cat = Category.new
+# cat.name = 'Drama'
+# cat.save!
+#
+# cat = Category.new
+# cat.name = 'Sci-Fi'
+# cat.save!
+#
+# cat = Category.new
+# cat.name = 'Police'
+# cat.save!
+#
+# cat = Category.new
+# cat.name = 'Kids'
+# cat.save!
