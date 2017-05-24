@@ -6,16 +6,7 @@
 
 <h1>Available Series</h1>
 
-
-<% if can? :update, Movie %>
-  <div>
-    <%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"%>
-  </div>
-<%end %>
-
-<div class="row">
-
-  <% if @movies.any? %>
+<% if @movies.any? %>
 
     <% @movies.each do |movie| %>
       <div class="div-order">
@@ -25,16 +16,22 @@
         <h4><%= movie.title%></h4>
       </div>
 
-    	<% end %>
+    <% end %>
+    
+<% else %>
+	<p>The Database is empty! </p>
+<% end %>
 
-  <% else %>
-  	<p>The Database is empty! </p>
-  <% end %>
+<% if can? :update, Movie %>
+<%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"  %>
+<%end %>
 
-</div>
+
 
 </div>
 
 
 </div>
 </html>
+
+

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="col-md-6 col-md-offset-3">
     <div class="edit-movie-form">
       <h1>Edit Series</h1>
@@ -14,39 +13,8 @@
             </ul>
         </div>
         <% end %>
-        <p>
-            <%= f.label :title %><br>
-            <%= f.text_field :title, :class =>"form-control" %>
-        </p>
-
-        <p>
-            <%= f.label :description %><br>
-            <%= f.text_area :description, :class =>"form-control" %>
-        </p>
-
-        <p>
-            <%= f.label :category %><br>
-            <%= f.text_area :category, :class =>"form-control" %>
-        </p>
-
-        <p>
-            <%= f.label :country %><br>
-            <%= f.text_area :country, :class =>"form-control" %>
-        </p>
-=======
-<%= simple_form_for @movie do |f| %>
-  <% if @movie.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@movie.errors.count, "error") %> prohibited
-      this movie from being saved:</h2>
-    <ul>
-    <% @movies.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-
+        
+       
   <p>
     <%= f.label :category_id %><br>
     <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]},
@@ -64,31 +32,16 @@
     <%= f.text_field :title, :class =>"form-control" %>
   </p>
 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description, :class =>"form-control" %>
-  </p>
+        <p>
+            <%= f.label :description %><br>
+            <%= f.text_area :description, :class =>"form-control" %>
+        </p>
 
-  <p>
-    <%= f.label :country %><br>
-    <%= f.text_area :country, :class =>"form-control" %>
-  </p>
 
-  <p>
-    <%= f.label :language %><br>
-    <%= f.text_area :language, :class =>"form-control" %>
-  </p>
-
-  <p>
-    <%= f.label :actor %><br>
-    <%= f.text_area :actor, :class =>"form-control" %>
-  </p>
-
-  <p>
-    <%= f.label :director %><br>
-    <%= f.text_area :director, :class =>"form-control" %>
-  </p>
->>>>>>> refs/remotes/origin/image
+        <p>
+            <%= f.label :country %><br>
+            <%= f.text_area :country, :class =>"form-control" %>
+        </p>
 
         <p>
             <%= f.label :language %><br>
@@ -110,46 +63,22 @@
             <%= f.text_area :n_chapter, :class =>"form-control" %>
         </p>
 
-<<<<<<< HEAD
-        <p>
-            <%= f.label :n_chapter %><br>
-            <%= f.text_area :n_chapter, :class =>"form-control" %>
-        </p>
-
-        <p>
-            <%= f.label :n_season %><br>
-            <%= f.text_area :n_season, :class =>"form-control" %>
-        </p>
-
-        <p>
-            <%= f.label :start_year %><br>
-            <%= f.text_area :start_year, :class =>"form-control" %>
-        </p>
-
-        <p>
-            <%= f.label :finish_year %><br>
-            <%= f.text_area :finish_year, :class =>"form-control" %>
-        </p>
-
-        <p>
-            <%= f.button :submit, :class => "btn btn-primary" %>
-        </p>
-        <% end %>
-
-        <%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
-
-    </div>
-</div>
-=======
+  <p>
+    <%= f.label :start_year %><br>
+    <%= f.text_area :start_year, :class =>"form-control" %>
+  </p>
+  
   <p>
     <%= f.label :finish_year %><br>
     <%= f.text_area :finish_year, :class =>"form-control" %>
   </p>
-
+  
   <p>
     <%= f.button :submit, :class => "btn btn-primary" %>
   </p>
 <% end %>
-
+ 
 <%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
->>>>>>> refs/remotes/origin/image
+
+    </div>
+</div>

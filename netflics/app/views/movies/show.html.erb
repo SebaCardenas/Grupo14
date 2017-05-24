@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 <div class="col-md-6 col-md-offset-3">
     <div class="series-info">
     <h1 class="series-title">
+    <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
 
         <strong>Title:</strong>
         <%= @movie.title %>
@@ -9,7 +9,7 @@
     </h1>
     <h1 class="series-author">
         <strong>Category:</strong>
-        <%= @movie.category %>
+        <%= @movie.category.name %>
     </h1>
 
     <p class="series-desc">
@@ -19,7 +19,16 @@
 
     </p>
 
+    <p>
+      <strong>Country:</strong>
+      <%=  country = ISO3166::Country[@movie.country]
+    country.translations[I18n.locale.to_s] || country.name %>
+    </p>
 
+    <p>
+      <strong>Actor:</strong>
+      <%= @movie.actor %>
+    </p>
 
     <p>
         <strong>Country:</strong>
@@ -64,76 +73,10 @@ country.translations[I18n.locale.to_s] || country.name %>
     <% if can? :destroy, Movie %>
     <%= link_to 'Delete', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
     <% end %>
-=======
-<div class= "row">
-  <div class= "col-md-4">
-
-    <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
-
-  </div>
-
-  <div class= "col-md-8">
-    <h1>
-      <strong><%= @movie.title %></strong>
-    </h1>
-
-    <p>
-      <strong>Description:</strong>
-      <%= @movie.description %>
-    </p>
-
-    <p>
-      <strong>Category:</strong>
-      <%= @movie.category.name %>
-    </p>
-
-    <p>
-      <strong>Country:</strong>
-      <%=  country = ISO3166::Country[@movie.country]
-    country.translations[I18n.locale.to_s] || country.name %>
-    </p>
-
-    <p>
-      <strong>Actor:</strong>
-      <%= @movie.actor %>
-    </p>
-
-    <p>
-      <strong>Director:</strong>
-      <%= @movie.director %>
-    </p>
-
-    <p>
-      <strong>Number of chapters:</strong>
-      <%= @movie.n_chapter %>
-    </p>
-
-    <p>
-      <strong>Number of seasons:</strong>
-      <%= @movie.n_season %>
-    </p>
-
-    <p>
-      <strong>Start Year:</strong>
-      <%= @movie.start_year %>
-    </p>
-
-    <p>
-      <strong>Finish Year:</strong>
-      <%= @movie.finish_year %>
-    </p>
-  </div>
-</div>
-<% if can? :update, Movie %>
-<%= link_to 'Edit', edit_movie_path(@movie), :class => "btn btn-primary"  %>
-<% end %>
-<% if can? :destroy, Movie %>
-<%= link_to 'Delete', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
-<% end %>
->>>>>>> refs/remotes/origin/image
-
-    <br><br>
+    
+       <br><br>
 
     <%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
   </div>
 </div>
+
