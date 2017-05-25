@@ -20,7 +20,7 @@
 @mixin background-tile {
     box-sizing: border-box;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 3px 3px 5px 6px #ccc;
     padding: 1.5em 1.25em;
 }
@@ -138,8 +138,9 @@ p.notice {
 }
 /* Book styles */
 .series {
-    height: 350%;
-    width: 90%;
+  overflow: auto;
+    //height: 350%;
+    width: 80%;
     margin-bottom: 40px;
     margin: auto;
     @include background-tile;
@@ -296,7 +297,7 @@ p.notice {
 
 .div-order{
   float: left;
-  margin: 5px;
+  margin: 8px;
 }
 
 .movie{
