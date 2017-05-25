@@ -74,6 +74,9 @@ country.translations[I18n.locale.to_s] || country.name %>
     <%= link_to 'Delete', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
     <% end %>
     
+    <%= render @book.reviews %>
+    <%= link_to 'Add Review', new_movie_review_path(@movie), :class => "btn btn-primary"  %>
+
        <br><br>
 
     <%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
