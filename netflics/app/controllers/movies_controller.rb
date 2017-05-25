@@ -40,13 +40,16 @@ class MoviesController < ApplicationController
     #@movie = Movie.new(movie_params)
     @movie.category_id = params[:category_id]
 
-    if @movie.save
-      redirect_to @movie
-
+    if params[:movie_img].blank?
+      redirect_to new_movie_path, :alert => "ERROR: Debe agregar una imagen"
     else
-      render 'new'
-    end
+      if @movie.save
+        redirect_to @movie
 
+      else
+        render 'new'
+      end
+    end
 
 
   end
