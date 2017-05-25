@@ -42,6 +42,13 @@ p {
 }
 img {
   border: 0;
+  position: relative;
+float: left;
+width:  100px;
+height: 100px;
+background-position: 50% 50%;
+background-repeat:   no-repeat;
+background-size:     cover;
   border-radius: 10px;}
 
 p.alert,
@@ -362,14 +369,20 @@ p.notice {
       overflow: hidden;
       margin-bottom: 0px;
       border: 1px solid transparent; }
+
       .movie-list .movie .movie-poster img {
+        object-fit: cover;
+        width: 180px;
+        height: 230px;
+        position: relative;
+        float: left;
         display: block;
-        width: 90%;
+        //width: 90%;
         max-width: 100%;
-        float:left;
-        height: auto;
+        //height: 50%;
         -webkit-transition: .3s ease;
                 transition: .3s ease; }
+
     .movie-list .movie:hover img {
       -webkit-transform: scale(1.2);
           -ms-transform: scale(1.2);
@@ -390,8 +403,14 @@ p.notice {
 
       .page figure {
         float:left;
+        background-repeat:   no-repeat;
+        background-size:     contain;
+        background-position: 50% 50%;
         margin-bottom: 30px; }
       .page img {
+        background-repeat:   no-repeat;
+        background-size:     contain;
+        background-position: 50% 50%;
         border-radius: 10px;
         max-width: 100%; }
       .page .movie-title {
