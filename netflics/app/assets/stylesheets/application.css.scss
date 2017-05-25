@@ -22,7 +22,7 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 3px 3px 5px 6px #ccc;
-    padding: 1.5em 1.25em;
+    padding: 2em 2em;
 }
 /* General styles */
 body {
@@ -40,6 +40,9 @@ p {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 300;
 }
+img {
+  border: 0;
+  border-radius: 10px;}
 
 p.alert,
 p.notice {
@@ -141,7 +144,7 @@ p.notice {
   overflow: auto;
     //height: 350%;
     width: 80%;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     margin: auto;
     @include background-tile;
 }
@@ -238,7 +241,10 @@ p.notice {
     }
 
     #book_book_img {
+        margin: 0px;
         margin-bottom: 10px;
+        border-radius: 10px;
+
     }
 }
 /* Edit Book Form styles */
@@ -256,6 +262,8 @@ p.notice {
 
     #book_book_img {
         margin-bottom: 10px;
+        border-radius: 10px;
+
     }
 }
 /* New/Edit review form styles */
@@ -298,15 +306,134 @@ p.notice {
 .div-order{
   float: left;
   border-radius: 10px;
-  margin: 8px;
+  margin: 5px;
 }
 
 .movie{
+  float:left;
   height: 300px;
+  border-radius: 10px;
   width: 200px;
+  margin: 5px;
+
 }
 
 .movie-show{
+  float:left;
   height: 425px;
+  border-radius: 10px;
   width: 300px;
+  margin: 5px;
+
 }
+
+// NUEVO
+
+
+.movie-list {
+  overflow: hidden;
+  margin: 0 -15px; }
+  .movie-list .movie {
+    width: 22%;
+    padding: 1px;
+    float: left;
+    margin-left: 10px;
+    margin-right:10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+    @media screen and (min-width: 991px) {
+      .movie-list .movie:nth-child(4n+1) {
+        clear: both; } }
+    @media screen and (max-width: 990px) {
+      .movie-list .movie {
+        width: 50%; }
+        .movie-list .movie:nth-child(4n+1) {
+          clear: none; }
+        .movie-list .movie:nth-child(2n+1) {
+          clear: both; } }
+    @media screen and (max-width: 480px) {
+      .movie-list .movie {
+        width: 80%;
+        clear: both; } }
+    .movie-list .movie .movie-poster {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 0px;
+      border: 1px solid transparent; }
+      .movie-list .movie .movie-poster img {
+        display: block;
+        width: 90%;
+        max-width: 100%;
+        float:left;
+        height: auto;
+        -webkit-transition: .3s ease;
+                transition: .3s ease; }
+    .movie-list .movie:hover img {
+      -webkit-transform: scale(1.2);
+          -ms-transform: scale(1.2);
+              transform: scale(1.2); }
+    .movie-list .movie .movie-title {
+
+      font-size: 24px;
+      font-size: 1.6em;
+      font-weight: 300;
+      margin-bottom: 20px; }
+      .movie-list .movie .movie-title a {
+        color: #84878d;
+        -webkit-transition: .3s ease;
+                transition: .3s ease; }
+        .movie-list .movie .movie-title a:hover {
+          color: #ffaa3c; }
+
+
+      .page figure {
+        float:left;
+        margin-bottom: 30px; }
+      .page img {
+        border-radius: 10px;
+        max-width: 100%; }
+      .page .movie-title {
+        position:block;
+        margin-bottom: 20px;
+        font-size: 36px;
+        font-size: 2.4em;
+        font-weight: 300; }
+
+
+        .container {
+          margin-right: auto;
+          margin-left: auto;
+          padding-left: 15px;
+          padding-right: 15px;
+          *zoom: 1; }
+          .container:after {
+            content: " ";
+            clear: both;
+            display: block;
+            //overflow: hidden;
+            height: 0; }
+          @media (min-width: 768px) {
+            .container {
+              width: 750px; } }
+          @media (min-width: 992px) {
+            .container {
+              width: 970px; } }
+          @media (min-width: 1200px) {
+            .container {
+              width: 1170px; } }
+
+        .container-fluid {
+          margin-right: auto;
+          margin-left: auto;
+          padding-left: 15px;
+          padding-right: 15px;
+          *zoom: 1; }
+          .container-fluid:after {
+            content: " ";
+            clear: both;
+            display: block;
+            overflow: hidden;
+            height: 0; }
+//NUEVO

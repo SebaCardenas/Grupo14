@@ -13,28 +13,36 @@
 
 
 
-
+<div class="page">
+  <div class="movie-list">
 <% if @movies.any? %>
 
     <% @movies.each do |movie| %>
-      <div class="div-order">
-        <a href="/movies/<%= movie.id %>">
-          <h4 align="center">
-          <%= image_tag movie.movie_img.url(:movie_index), class: "movie"%>
-          <p> </p>
-          <%= movie.title%>
-        </h4>
-        </a>
+
+        <div class="movie">
+
+
+            <!-- <h4 align="center"> -->
+            <figure class="movie-poster">
+            <a href="/movies/<%= movie.id %>">
+            <%= image_tag movie.movie_img.url(:movie_index), class: "movie"%>
+            </figure>
+          <div class="movie-title" align="center">
+            <%= movie.title%>
+          </div>
+          </a>
         </div>
+        <!-- </h4> -->
+
 
 
     <% end %>
-
 <% else %>
 	<p>The Database is empty! </p>
 <% end %>
 
-
+</div>
+</div>
 </div>
 
 
