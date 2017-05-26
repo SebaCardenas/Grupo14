@@ -1,10 +1,16 @@
-<div class="col-md-6 col-md-offset-3">
     <div class="series-info">
     <h1 class="series-title">
+
     <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
+
 
         <strong>Title:</strong>
         <%= @movie.title %>
+
+
+    <h2>Average Rating</h2>
+    <div class="average-review-rating" data-score=<%= @average_review %>><div>
+    <span>Based on <%= @movie.reviews.count %> reviews </span>
 
     </h1>
     <h1 class="series-author">
@@ -66,6 +72,8 @@ country.translations[I18n.locale.to_s] || country.name %>
         <%= @movie.finish_year %>
     </p>
 
+
+
     <% if can? :update, Movie %>
 
     <%= link_to 'Edit', edit_movie_path(@movie), :class => "btn btn-primary"  %>
@@ -73,10 +81,36 @@ country.translations[I18n.locale.to_s] || country.name %>
     <% if can? :destroy, Movie %>
     <%= link_to 'Delete', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
     <% end %>
-    
-       <br><br>
+
+    <div class = "row">
+        <div class="col-md-4">
+            <%= render @movie.reviews %>
+            <div>       
+                <%= link_to 'Add Review', new_movie_review_path(@movie), :class => "btn btn-primary"  %>
+            </div>
+        </div>
+    </div>
 
     <%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
   </div>
-</div>
+<script src="jquery.raty.js"></script>
 
+  <script>
+      $('.review-rating').raty({
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/stars/'
+      });
+  </script>
+
+<script>
+    $('.average-review-rating').raty({
+        readOnly: true,
+        path: '/assets/stars/',
+        score: function() {
+            return $(this).attr('data-score')
+        }
+    });
+</script>
