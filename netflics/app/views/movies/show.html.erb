@@ -1,7 +1,8 @@
-<div class="col-md-6 col-md-offset-3">
     <div class="series-info">
     <h1 class="series-title">
+
     <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
+
 
         <strong>Title:</strong>
         <%= @movie.title %>
@@ -66,6 +67,8 @@ country.translations[I18n.locale.to_s] || country.name %>
         <%= @movie.finish_year %>
     </p>
 
+
+
     <% if can? :update, Movie %>
 
     <%= link_to 'Edit', edit_movie_path(@movie), :class => "btn btn-primary"  %>
@@ -81,5 +84,3 @@ country.translations[I18n.locale.to_s] || country.name %>
 
     <%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
   </div>
-</div>
-

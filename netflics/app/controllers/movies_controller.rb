@@ -3,8 +3,12 @@ class MoviesController < ApplicationController
 
 
   def index
+    if params[:category].blank?
       #@movies = Movie.all
-
+    else
+      @category_id = Category.find_by(name: params[:category]).id
+      @movies = Movie.where(:category_id => @category_id)
+    end
   end
 
   def show
@@ -39,14 +43,19 @@ class MoviesController < ApplicationController
     #@movie.user_id = current_user.id
     #@movie = Movie.new(movie_params)
     @movie.category_id = params[:category_id]
+    puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
+    puts @movie.movie_img_file_name
+     if @movie.movie_img_file_name.blank?
+       redirect_to new_movie_path, :alert => "ERROR: Debe agregar una imagen"
+     else
 
-    if @movie.save
-      redirect_to @movie
+      if @movie.save
+        redirect_to @movie
 
-    else
-      render 'new'
+      else
+        render 'new'
+      end
     end
-
 
 
   end
