@@ -1,13 +1,25 @@
 class MoviesController < ApplicationController
   load_and_authorize_resource
 
+  def index
+  @recipes = Recipe.all
+  if params[:search]
+    @recipes = Recipe.search(params[:search]).order("created_at DESC")
+  else
+    @recipes = Recipe.all.order("created_at DESC")
+  end
+  end
 
   def index
-    if params[:category].blank?
-      #@movies = Movie.all
+    if params[:search]
+      @movies = Movie.search(params[:search]).order("created_at DESC")
     else
-      @category_id = Category.find_by(name: params[:category]).id
-      @movies = Movie.where(:category_id => @category_id)
+      if params[:category].blank?
+        #@movies = Movie.all
+      else
+        @category_id = Category.find_by(name: params[:category]).id
+        @movies = Movie.where(:category_id => @category_id)
+      end
     end
   end
 
