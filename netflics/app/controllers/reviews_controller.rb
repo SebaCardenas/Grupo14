@@ -31,6 +31,10 @@ class ReviewsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@review.destroy
+		redirect_to movie_path(@movie)
+	end
 
 	private
 		def review_params
