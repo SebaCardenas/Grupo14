@@ -7,6 +7,11 @@
         <strong>Title:</strong>
         <%= @movie.title %>
 
+
+    <h2>Average Rating</h2>
+    <div class="average-review-rating" data-score=<%= @average_review %>><div>
+    <span>Based on <%= @movie.reviews.count %> reviews </span>
+
     </h1>
     <h1 class="series-author">
         <strong>Category:</strong>
@@ -76,11 +81,36 @@ country.translations[I18n.locale.to_s] || country.name %>
     <% if can? :destroy, Movie %>
     <%= link_to 'Delete', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
     <% end %>
-    
-       <br><br>
-    <%= link_to 'Add Review', new_movie_review_path(@movie), :class => "btn btn-primary"  %>
-    <%= render @movie.reviews %>
-       <br><br>
+
+    <div class = "row">
+        <div class="col-md-4">
+            <%= render @movie.reviews %>
+            <div>       
+                <%= link_to 'Add Review', new_movie_review_path(@movie), :class => "btn btn-primary"  %>
+            </div>
+        </div>
+    </div>
 
     <%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
   </div>
+<script src="jquery.raty.js"></script>
+
+  <script>
+      $('.review-rating').raty({
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/stars/'
+      });
+  </script>
+
+<script>
+    $('.average-review-rating').raty({
+        readOnly: true,
+        path: '/assets/stars/',
+        score: function() {
+            return $(this).attr('data-score')
+        }
+    });
+</script>

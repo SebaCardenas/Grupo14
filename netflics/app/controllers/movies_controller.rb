@@ -13,6 +13,12 @@ class MoviesController < ApplicationController
 
   def show
     #@movie = Movie.find(params[:id])
+    if @movie.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @movie.reviews.average(:rating).round(2)
+    end
+
   end
 
   def update
