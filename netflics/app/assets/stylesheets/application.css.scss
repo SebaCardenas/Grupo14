@@ -26,6 +26,7 @@
 }
 /* General styles */
 body {
+
     background-color: #f5f5f5;
     font-family: 'Lora', serif;
 }
@@ -66,12 +67,14 @@ p.notice {
     background-color: #fff;
     padding-bottom: 5px;
     padding-top: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
 
     .navbar-nav > li > a {
         color: #222;
 
         &:hover {
-            color: darken(#f1c40f, 5%);
+            color: darken(#AF1A19, 1%);
             transition: 0.5s;
         }
     }
@@ -85,7 +88,7 @@ p.notice {
             height: 30px;
             width: 100px;
             margin: 0px;
-            border-radius: 0px;
+            border-radius: 5px;
 
 
           }
@@ -95,19 +98,31 @@ p.notice {
     }
 
     .dropdown-menu > li > a:hover {
-        background-color: darken(#f1c40f, 5%);
+      box-sizing: border-box;
+      border-radius: 5px;
+        background-color: darken(#AF1A19, 1%);
         color: #fff;
     }
 
     .navbar-nav > .open > a,
     .navbar-nav > .open > a:focus,
     .navbar-nav > .open > a:hover {
-        background-color: darken(#f1c40f, 5%);
+      box-sizing: border-box;
+      border-radius: 5px;
+        background-color: darken(#AF1A19, 1%);
         color: #fff;
     }
 }
 
+.search-form{
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #fff;
+
+}
 .dropdown-menu > .active > a {
+  box-sizing: border-box;
+  border-radius: 5px;
     background-color: #f1c40f;
     color: #fff;
 }
@@ -115,14 +130,14 @@ p.notice {
 .btn-custom {
     color: darken(#f1c40f, 5%);
     background-color: #fff;
-    border: 1px solid darken(#f1c40f, 5%);
+    border: 1px solid darken(#AF1A19, 1%);
     padding: 8px 20px;
     border-radius: 10px;
     font-family: 'Ubuntu', sans-serif;
 
     &:hover {
         text-decoration: none;
-        background-color: darken(#f1c40f, 5%);
+        background-color: darken(#AF1A19, 1%);
         color: #fff;
         transition: 0.5s;
     }
