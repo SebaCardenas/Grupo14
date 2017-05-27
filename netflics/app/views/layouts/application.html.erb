@@ -9,11 +9,12 @@
       <%= link_to image_tag("/netflics_small.png"), root_path, class: "navbar-brand" %>
   </div>
 
-  <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Series" %>
-    <%= submit_tag "Search", :name => nil %>
-  <% end %>
-
+  <div class="navbar-brand navbar-right">
+    <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Series" %>
+      <%= submit_tag "Search", :name => nil %>
+    <% end %>
+  </div>
   <ul class="nav navbar-nav navbar-right">
 
     <li class="dropdown">
