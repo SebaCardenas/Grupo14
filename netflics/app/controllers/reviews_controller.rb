@@ -13,7 +13,9 @@ class ReviewsController < ApplicationController
 		@review.movie_id = @movie.id
 		@review.user_id = current_user.id
 
-		if @review.save
+		if !@review.rating
+       		redirect_to new_movie_review_path(@movie), :alert => "ERROR: Star rating is required"
+		elsif @review.save
 			redirect_to movie_path(@movie)
 		else
 			render 'new'
