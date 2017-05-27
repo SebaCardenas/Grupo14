@@ -56,7 +56,6 @@ class MoviesController < ApplicationController
     #@movie.user_id = current_user.id
     #@movie = Movie.new(movie_params)
     @movie.category_id = params[:category_id]
-    puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
     puts @movie.movie_img_file_name
      if @movie.movie_img_file_name.blank?
        redirect_to new_movie_path, :alert => "ERROR: Debe agregar una imagen"
