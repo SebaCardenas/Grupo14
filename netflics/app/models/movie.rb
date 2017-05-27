@@ -7,8 +7,7 @@ class Movie < ApplicationRecord
   validates_attachment_content_type :movie_img, content_type: /\Aimage\/.*\z/
 
   def self.search(search)
-  where("title LIKE ? OR country LIKE ? OR director LIKE? OR language LIKE?
-  OR category_id LIKE ?",
-  "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+  where("title LIKE ? OR director LIKE? OR language LIKE? OR actor LIKE?" ,
+  "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
   end
 end

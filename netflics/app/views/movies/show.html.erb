@@ -56,14 +56,8 @@
     </p>
 
     <p>
-        <strong>Country:</strong>
-        <%=  country = ISO3166::Country[@movie.country]
-country.translations[I18n.locale.to_s] || country.name %>
-    </p>
-
-    <p>
-        <strong>Actor:</strong>
-        <%= @movie.actor %>
+        <strong>Language:</strong>
+        <%= @movie.language %>
     </p>
 
     <p>

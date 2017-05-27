@@ -6,7 +6,11 @@ class MoviesController < ApplicationController
       @movies = Movie.search(params[:search]).order("created_at DESC")
     else
       if params[:category].blank?
-        #@movies = Movie.all
+        if params[:order].blank?
+          #@movies = Movie.all
+        else
+          @movies = Movie.all.order(params[:order])
+        end
       else
         @category_id = Category.find_by(name: params[:category]).id
         @movies = Movie.where(:category_id => @category_id)
