@@ -11,7 +11,7 @@
 
 	<p>
 		<%= link_to "Edit", edit_movie_review_path(review.movie, review), :class => "btn btn-primary"%>
-		<%= link_to "Delete", edit_movie_review_path(review.movie, review, method: :delete, data:{ confirm: "Are you sure?"}), :class => "btn btn-danger"%>
+		<%= link_to "Delete", movie_review_path(review.movie, review), method: :delete, data:{ confirm: "Are you sure?"}, :class => "btn btn-danger"%>
 </p>
 	<%end%>
 <%end%>
