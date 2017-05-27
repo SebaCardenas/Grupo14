@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+	load_and_authorize_resource
 
 	before_action :find_movie
 	before_action :find_review, only: [:edit, :update, :destroy]
@@ -7,11 +8,11 @@ class ReviewsController < ApplicationController
 		@review = Review.new
 	end
 
-	def create 
+	def create
 		@review = Review.new(review_params)
 		@review.movie_id = @movie.id
-		@review.user_id = current_user.id 
-		
+		@review.user_id = current_user.id
+
 		if @review.save
 			redirect_to movie_path(@movie)
 		else
@@ -23,7 +24,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def update
-		
+
 		if @review.update(review_params)
 			redirect_to movie_path(@movie)
 		else
@@ -39,11 +40,11 @@ class ReviewsController < ApplicationController
 	private
 		def review_params
 			params.require(:review).permit(:rating, :comment)
-		end	
+		end
 
 		def find_movie
 			@movie = Movie.find(params[:movie_id])
-		end	
+		end
 
 		def find_review
 			@review = Review.find(params[:id])

@@ -1,4 +1,7 @@
+<p> <%=User.find(review.user_id).name%> at <%=review.created_at.to_time.strftime('%B %e %l:%M %p')%> </p>
 <div class="review-rating" data-score="<%=review.rating%>"></div>
+
+<div class="review">
 
 <p><%= review.comment %></p>
 
@@ -6,8 +9,10 @@
 
 	<% if review.user_id == current_user.id%>
 
-		<%= link_to "Edit", edit_movie_review_path(review.movie, review)%>
-		<%= link_to "Delete", edit_movie_review_path(review.movie, review, method: :delete, data:{ confirm: "Are you sure?"})%>
-
+	<p>
+		<%= link_to "Edit", edit_movie_review_path(review.movie, review), :class => "btn btn-primary"%>
+		<%= link_to "Delete", edit_movie_review_path(review.movie, review, method: :delete, data:{ confirm: "Are you sure?"}), :class => "btn btn-danger"%>
+</p>
 	<%end%>
 <%end%>
+</div>

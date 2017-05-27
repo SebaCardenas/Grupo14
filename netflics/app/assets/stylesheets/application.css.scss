@@ -41,6 +41,7 @@ p {
     font-weight: 300;
 }
 img {
+
   border: 0;
   position: relative;
 float: left;
@@ -174,11 +175,21 @@ p.notice {
 }
 
 .series-info {
+  overflow: auto;
+  width: 80%;
+  margin-bottom: 50px;
+  margin: auto;
+
     @include background-tile;
 
     .series-title {
         margin-top: 0;
         font-size: 2em;
+        img{
+          margin-right: 40px;
+          margin-bottom: 00px;
+          margin-top: 10px;
+        }
     }
 
     .avg-rating {
@@ -221,8 +232,13 @@ p.notice {
 }
 /* Reviews styles */
 .reviews {
-    @include background-tile;
-    margin-top: 40px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 2px #ccc;
+  padding: 2em 2em;
+  margin-left: 10px;
+  margin-right: 10px;
 
     h1 {
         margin-top: 0;
@@ -334,6 +350,30 @@ p.notice {
   width: 200px;
   margin: 5px;
 
+}
+.review-rating
+{
+  vertical-align: middle;
+  overflow: hidden;
+  margin-bottom: 10px;
+
+  img{
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.average-review-rating{
+  vertical-align: middle;
+  overflow: hidden;
+
+  img{
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+
+  }
 }
 
 .movie-show{

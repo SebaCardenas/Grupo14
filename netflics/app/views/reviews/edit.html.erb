@@ -1,16 +1,19 @@
 <h1> Edit Review </h1>
 
 <%= simple_form_for([@movie, @review]) do |f|%>
-	<div id="rating-form"> 
-	 	<label>Rating </label>
-	</div> 	<%= f.input :comment %>
- 	<%= f.button :submit %>
+	<div class="average-review-rating" id="rating-form">
+
+	</div>
+	<p><%= f.input :comment %></p>
+ <p>	<%= f.button :submit %></p>
 
 <% end %>
 
 <script>
+
 	$('#rating-form').raty({
 		path: '/assets/stars/',
 		scoreName: 'review[rating]'
 	});
+
 </script>
