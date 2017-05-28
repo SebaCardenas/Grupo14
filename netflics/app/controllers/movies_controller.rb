@@ -2,6 +2,12 @@ class MoviesController < ApplicationController
   load_and_authorize_resource
 
   def index
+    Child.all.each do |c|
+      c.state = false
+    end
+    # current_user.children.find_by(name: params[:child]).state = true
+    @child = current_user.children.find_by(name: params[:child])
+
     if params[:search]
       @movies = Movie.search(params[:search]).order("created_at DESC")
     else

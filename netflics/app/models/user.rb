@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :children
+
   def admin?
          self.role. == "admin"
   end
@@ -15,5 +17,5 @@ class User < ApplicationRecord
   def child?
          self.role. == "child"
   end
-  
+
 end
