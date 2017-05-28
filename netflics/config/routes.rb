@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   scope "/admin" do
   resources :users
+  resources :news
 end
 
 
