@@ -2,14 +2,15 @@
 <html>
 <div class="series">
 
-
-<h1><strong>Available Series</strong>
+<% if @child_view.blank?%>
+  <h1><strong>Available Series</strong>
+<%else %>
+  <h1><strong>Available Series For Kids</strong>
+<%end %>
 <span style="float:right;">
-  <% if @child_view.present?%>
-    <% if @child_view.state = false %>
-      <% if can? :update, Movie %>
-      <%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"  %>
-      <%end %>
+  <% if @child_view.blank?%>
+    <% if can? :update, Movie %>
+    <%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"  %>
     <%end %>
   <%end %>
 </span>

@@ -64,13 +64,10 @@
 
                   <% else %>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                    aria-expanded="false">Hello, <%=@child_view.role%> user
+                    aria-expanded="false">Hello, Kid user
                     <%= @child_view.name %> <span class="caret"></span></a>
 
                     <ul class="dropdown-menu" role="menu">
-                      <% if current_user.role == "common" %>
-                          <li><%= link_to "New kid", new_child_path %></li>
-                      <% end%>
                       <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
 
                     </ul>
@@ -118,18 +115,19 @@
 
         <% end%>
 
-
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-      aria-expanded="false">Filter by Category <span class="caret"></span></a>
-      <ul class="dropdown-menu" role="menu">
-        <% Category.all.each do |category| %>
-          <li>
-            <%= link_to category.name, movies_path(category: category.name), class: "link" %>
-          </li>
-        <%end%>
-      </ul>
-    </li>
+    <% if @child_view.nil? %>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-expanded="false">Filter by Category <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <% Category.all.each do |category| %>
+            <li>
+              <%= link_to category.name, movies_path(category: category.name), class: "link" %>
+            </li>
+          <%end%>
+        </ul>
+      </li>
+    <% end %>
 
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
