@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<h1>Available News</h1>
+
+
+<span style="float:right;">
+  <%= link_to 'Add a new', new_news_path, :class => "btn btn-primary"  %>
+</span>
+
+
+<% if @news.any? %>
+
+    <% @news.each do |new| %>
+            <%= render @new %>
+    <% end %>
+<% else %>
+	<p>There are no news available </p>
+<% end %>
+
+
+</html>
