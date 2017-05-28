@@ -7,15 +7,10 @@
 
 <div class="container">
 
-  <% if @child_view.nil? %>
+
     <div class="navbar-header">
         <%= link_to image_tag("/netflics_small.png"), root_path, class: "navbar-brand" %>
     </div>
-  <% else %>
-    <div class="navbar-header">
-        <%= image_tag("/netflics_small.png", class: "navbar-brand")%>
-    </div>
-    <% end %>
 
   <ul class="nav navbar-nav navbar-right">
 
