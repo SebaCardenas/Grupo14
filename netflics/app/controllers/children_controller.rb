@@ -1,5 +1,12 @@
 class ChildrenController < ApplicationController
 
+  def index
+
+  end
+
+  def show
+    @child = Child.find(params[:id])
+  end
   def destroy
     @child = Child.find(params[:id])
     @child.destroy
@@ -10,15 +17,17 @@ class ChildrenController < ApplicationController
     @child = Child.new
   end
 
-  def sign_in
-    Child.all.each do |c|
-      c.state = false
-    end
-    current_user.children.find_by(name: params[:child]).state = true
-    @child = current_user.children.find_by(name: params[:child])
-    return @child
-    
+  def edit
+    @child = Child.find(params[:id])
+    render 'edit'
   end
+
+  def update
+    @child = Child.find(params[:id])
+    @child.update_attributes(child_params)
+    redirect_to movies_path
+  end
+
   def create
     @child = Child.new(child_params)
     @child.user_id = current_user.id

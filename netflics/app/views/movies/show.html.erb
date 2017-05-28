@@ -9,14 +9,18 @@
     <% link_movie = String.new(@movie.title.gsub(' ','+'))%>
     <%= link_to 'Ver en Netflix', "https://www.google.com/search?q=netflix.com+"+link_movie+"+serie"+"&btnI=Im+Feeling+Lucky", :class=> "btn btn-custom3"  %>
   </span>
+    <% if @child_view.present?%>
+      <% if @child_view.state = false %>
         <% if can? :update, Movie %>
         <%= link_to 'Edit Serie', edit_movie_path(@movie), :class => "btn btn-primary"  %>
         <% end %>
         <% if can? :destroy, Movie %>
         <%= link_to 'Delete Serie', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
         <% end %>
+      <% end %>
+    <% end %>
 
-      </span>
+</span>
 
 
 

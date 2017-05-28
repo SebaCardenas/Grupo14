@@ -5,8 +5,12 @@
 
 <h1><strong>Available Series</strong>
 <span style="float:right;">
-  <% if can? :update, Movie %>
-  <%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"  %>
+  <% if @child_view.present?%>
+    <% if @child_view.state = false %>
+      <% if can? :update, Movie %>
+      <%= link_to 'Add a new Serie', new_movie_path, :class => "btn btn-primary"  %>
+      <%end %>
+    <%end %>
   <%end %>
 </span>
 </h1>
