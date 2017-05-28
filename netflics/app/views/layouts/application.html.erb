@@ -55,8 +55,8 @@
                       <% if current_user.role == "common" %>
                           <li><%= link_to "New kid", new_child_path %></li>
                       <% end%>
-                      <li><%= link_to "Edit profile", edit_user_registration_path %></li>
                       <li><%= link_to "Edit Kids", children_path%></li>
+                      <li><%= link_to "Edit profile", edit_user_registration_path %></li>
                       <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
 
                     </ul>
@@ -71,8 +71,6 @@
                       <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
 
                     </ul>
-
-
 
                   <% end%>
 

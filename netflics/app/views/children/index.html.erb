@@ -12,13 +12,18 @@
           <div class="movie-title" align="center">
             <p class="link-movie"><%= child.name%></p>
           </div>
+
           <div class="movie-title" align="center">
-            <li><%= link_to "Edit", edit_child_path(child) %></li>
+            <%= link_to "Edit", edit_child_path(child),
+            :class => "btn btn-primary"  %>
+
             <%= link_to 'Delete Serie', child_path(child), method: :delete,
-            data: { confirm: 'Are you sure you want to delete '+child.name+'?' } ,
+            data: { confirm: 'Are you sure you want to delete '+child.name+'?' },
             :class => "btn btn-danger"  %>
           </div>
+
         </div>
+
       <%end%>
 
 </div>
