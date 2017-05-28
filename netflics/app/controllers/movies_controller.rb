@@ -42,7 +42,11 @@ class MoviesController < ApplicationController
     end
 
     if params[:search]
-      @movies = Movie.search(params[:search]).order("created_at DESC")
+      if @child_view.present?
+        @movies = Movie.where(:category_id => "8").search(params[:search]).order("created_at DESC")
+      else
+        @movies = Movie.search(params[:search]).order("created_at DESC")
+      end
     else
       if @child_view.present?
         if params[:order].blank?
