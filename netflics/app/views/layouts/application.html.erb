@@ -20,7 +20,7 @@
 
 
         <% if user_signed_in? %>
-          <% if current_user.role == "common" %>
+          <% if (current_user.role == "common") || (current_user.role == "admin") %>
               <% if current_user.children.present? %>
 
                 <!--si el usuario tiene cuentas hijos, que las despliegue

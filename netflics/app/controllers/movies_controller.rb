@@ -1,45 +1,8 @@
 class MoviesController < ApplicationController
   load_and_authorize_resource
+  before_action :define_variables, only: [:index, :show]
 
   def index
-
-
-    if current_user.present?
-
-
-      @child = current_user.children.find_by(name: params[:child])
-      @child2 = current_user.children
-
-      if @child.present?
-        @child_view_id = @child.id
-        @child_view = Child.find(@child_view_id)
-        Child.all.each do |c|
-          c.state = false
-          c.save
-        end
-        @child_view.state = true
-        @child_view.save
-
-      else
-        @child2.each do |c2|
-
-          if c2.state?
-            @child_view_id = c2.id
-            @child_view = Child.find(@child_view_id)
-
-          end
-        end
-      end
-    else
-      User.all.each do |u|
-        if u.children.present?
-          u.children.each do |uc|
-            uc.state = false
-            uc.save
-          end
-        end
-      end
-    end
 
     if params[:search]
       if @child_view.present?
@@ -123,6 +86,42 @@ class MoviesController < ApplicationController
     end
 
 
+  end
+
+  def define_variables
+    if current_user.present?
+
+
+      @child = current_user.children.find_by(name: params[:child])
+      @child2 = current_user.children
+
+      if @child.present?
+        @child_view_id = @child.id
+        @child_view = Child.find(@child_view_id)
+
+        @child_view.state = true
+        @child_view.save
+
+      else
+        @child2.each do |c2|
+
+          if c2.state?
+            @child_view_id = c2.id
+            @child_view = Child.find(@child_view_id)
+
+          end
+        end
+      end
+    else
+      User.all.each do |u|
+        if u.children.present?
+          u.children.each do |uc|
+            uc.state = false
+            uc.save
+          end
+        end
+      end
+    end
   end
 
   private
