@@ -1,63 +1,140 @@
-<h1>
-  <strong><%= @movie.title %></strong>
+<!DOCTYPE html>
+<html>
+    <div class="series-info">
+    <p>
+        <%= link_to 'Back to All Series', movies_path, :class => "btn btn-info"  %>
+
+<span style="float:right;">
+  <span>
+    <% link_movie = String.new(@movie.title.gsub(' ','+'))%>
+    <%= link_to 'Ver en Netflix', "https://www.google.com/search?q=netflix.com+"+link_movie+"+serie"+"&btnI=Im+Feeling+Lucky", :class=> "btn btn-custom3"  %>
+  </span>
+        <% if can? :update, Movie %>
+        <%= link_to 'Edit Serie', edit_movie_path(@movie), :class => "btn btn-primary"  %>
+        <% end %>
+        <% if can? :destroy, Movie %>
+        <%= link_to 'Delete Serie', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
+        <% end %>
+
+      </span>
+
+
+
+    </p>
+
+    <h1 class="series-title">
+
+
+    <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
+
+
+        <strong>Title:</strong>
+        <%= @movie.title %>
+
+      </h1>
+
+
+    <div class="average-review-rating" data-score=<%= @average_review %>>  </div>
+
+
+    <p>(<%= @movie.reviews.count %> Reviews)</p>
+
+
+    <h1 class="series-author">
+        <strong>Category:</strong>
+        <%= @movie.category.name %>
+    </h1>
+
+    <p class="series-desc">
+
+        <strong>Description:</strong>
+        <%= @movie.description %>
+
+    </p>
+
+    <p>
+      <strong>Country:</strong>
+      <%=  country = ISO3166::Country[@movie.country]
+    country.translations[I18n.locale.to_s] || country.name %>
+    </p>
+
+    <p>
+      <strong>Actor:</strong>
+      <%= @movie.actor %>
+    </p>
+
+    <p>
+        <strong>Language:</strong>
+        <%= @movie.language %>
+    </p>
+
+    <p>
+        <strong>Director:</strong>
+        <%= @movie.director %>
+    </p>
+
+    <p>
+        <strong>Number of chapters:</strong>
+        <%= @movie.n_chapter %>
+    </p>
+
+    <p>
+        <strong>Number of seasons:</strong>
+        <%= @movie.n_season %>
+    </p>
+
+    <p>
+        <strong>Start Year:</strong>
+        <%= @movie.start_year %>
+    </p>
+
+    <p>
+        <strong>Finish Year:</strong>
+        <%= @movie.finish_year %>
+    </p>
+
+
+<h1 class="series-title" style="margin-top:100px;margin-left:10px;" align="left">
+  <strong>Reviews</strong>
 </h1>
+    <div class = "reviews">
 
-<p>
-  <strong>Description:</strong>
-  <%= @movie.description %>
-</p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @movie.category %>
-</p>
+            <%= render @movie.reviews %>
 
-<p>
-  <strong>Country:</strong>
-  <%=  country = ISO3166::Country[@movie.country]
-country.translations[I18n.locale.to_s] || country.name %>
-</p>
+            <% if can? :create, Review %>
+            <p>
+                <%= link_to 'Add Review', new_movie_review_path(@movie), :class => "btn btn-primary"  %>
+            </p>
 
-<p>
-  <strong>Actor:</strong>
-  <%= @movie.actor %>
-</p>
+            <%end%>
 
-<p>
-  <strong>Director:</strong>
-  <%= @movie.director %>
-</p>
+    </div>
 
 
 
 
-<p>
-  <strong>Number of chapters:</strong>
-  <%= @movie.n_chapter %>
-</p>
+  </div>
 
-<p>
-  <strong>Number of seasons:</strong>
-  <%= @movie.n_season %>
-</p>
 
-<p>
-  <strong>Start Year:</strong>
-  <%= @movie.start_year %>
-</p>
 
-<p>
-  <strong>Finish Year:</strong>
-  <%= @movie.finish_year %>
-</p>
-
-<% if can? :update, Movie %>
-<%= link_to 'Edit', edit_movie_path(@movie), :class => "btn btn-primary"  %>
-<% end %>
-<% if can? :destroy, Movie %>
-<%= link_to 'Delete', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
-<% end %>
-
-<br><br>
-
-<%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
+  <!-- <script src="jquery.raty.js"></script> -->
+  <script>
+      $('.review-rating').raty({
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/stars/'
+      });
+  </script>
+  <script>
+      $('.average-review-rating').raty({
+          readOnly: true,
+          path: '/assets/stars/',
+          score: function() {
+              return $(this).attr('data-score')
+          }
+      });
+  </script>
+</html>

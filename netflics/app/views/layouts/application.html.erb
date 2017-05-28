@@ -1,39 +1,95 @@
 <!DOCTYPE html>
 <html>
+<%= favicon_link_tag '/favicon2.png' %>
+<%= stylesheet_link_tag "application" %>
+<%= javascript_include_tag "application" %>
 <nav class="navbar navbar-default">
 
 <div class="container">
   <div class="navbar-header">
-      <%= link_to "Netflics", root_path, class: "navbar-brand" %>
+      <%= link_to image_tag("/netflics_small.png"), root_path, class: "navbar-brand" %>
   </div>
-  <ul class="nav navbar-nav">
-    <% if user_signed_in? %>
-    <li><p><p>     Hello, <%=current_user.role%> user  <%= current_user.name %>   </p></p></li>
-    <li><%= link_to "Edit profile", edit_user_registration_path %></li>
 
-    <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
-    <%else %>
-    <li><p><p>     Hello, guest user </p></p></li>
-    <li><%= link_to "Sign up", new_user_registration_path%></li>
+  <ul class="nav navbar-nav navbar-right">
 
-    <li> <%= link_to "Log in", new_user_session_path %></li>
+
+        <% if user_signed_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+          aria-expanded="false">Hello, <%=current_user.role%> user  <%= current_user.name %> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+            <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
+        </ul>
+      </li>
+
+        <%else %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+          aria-expanded="false">Hello, guest user <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><%= link_to "Sign up", new_user_registration_path%></li>
+
+            <li> <%= link_to "Log in", new_user_session_path %></li>
+        </ul>
+      </li>
+
+
+        <% end %>
+
+
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+      aria-expanded="false">Filter by Category <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <% Category.all.each do |category| %>
+          <li>
+            <%= link_to category.name, movies_path(category: category.name), class: "link" %>
+          </li>
+        <%end%>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+      aria-expanded="false">Order by <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+
+        <li> <%= link_to "By Title", movies_path(order: "title"), class: "link" %> </li>
+        <li> <%= link_to "Recently Added", movies_path(order: "created_at"), class: "link" %> </li>
+        <li> <%= link_to "Year", movies_path(order: "start_year"), class: "link" %> </li>
+        <li> <%= link_to "Categories", movies_path(order: "category_id"), class: "link" %> </li>
+        <li> <%= link_to "Language", movies_path(order: "language"), class: "link" %> </li>
+        <li> <%= link_to "Country", movies_path(order: "country"), class: "link" %> </li>
+
+
+      </ul>
+    </li>
+
+
+
+    <li style="margin-top:10px;">
+    <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
+      <p><%=  text_field_tag :search, params[:search], placeholder: "Search Series", class:"search-form"%>
+       <%= submit_tag "Search", :name => nil, class: "btn btn-default" %></p>
     <% end %>
-
+  </li>
   </ul>
 </div>
 </nav>
 
-
+<%= render('layouts/messages.html.erb') %>
   <head>
 
     <title>Netflics</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<%= render('layouts/messages.html.erb') %>
+
+
+  <div class="container">
     <%= yield %>
+  </div>
 
 </html>

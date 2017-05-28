@@ -1,0 +1,19 @@
+<div class="reviews">
+<%= simple_form_for([@movie, @movie.reviews.build]) do |f|%>
+	<div class= "average-review-rating" id="rating-form">
+
+	</div>
+
+
+
+ <p>	<%= f.input :comment %></p>
+ 	<p><%= f.button :submit %></p>
+
+<% end %>
+</div>
+<script>
+	$('#rating-form').raty({
+		path: '/assets/stars/',
+		scoreName: 'review[rating]'
+	});
+</script>
