@@ -10,12 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429221428) do
+ActiveRecord::Schema.define(version: 20170529004332) do
+
+  create_table "articles", force: :cascade do |t|
+    t.text     "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "category"
     t.string   "country"
     t.string   "language"
     t.text     "actor"
@@ -25,9 +38,30 @@ ActiveRecord::Schema.define(version: 20170429221428) do
     t.integer  "start_year"
     t.integer  "finish_year"
     t.datetime "date_update"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "creator"
+    t.integer  "category_id"
+    t.string   "movie_img_file_name"
+    t.string   "movie_img_content_type"
+    t.integer  "movie_img_file_size"
+    t.datetime "movie_img_updated_at"
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "rating"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "movie_id"
   end
 
   create_table "users", force: :cascade do |t|
