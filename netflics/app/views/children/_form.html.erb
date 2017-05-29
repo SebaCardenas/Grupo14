@@ -1,0 +1,9 @@
+
+<%= simple_form_for @child do |f| %>
+
+  <%= f.input :name, label: "Name Account" %>
+  <%= f.button :submit,  "Create Account", :class => "btn btn-primary"  %>
+<% end %>
+
+ <br>
+<%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
