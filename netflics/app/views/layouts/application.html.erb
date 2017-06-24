@@ -15,9 +15,13 @@
   <ul class="nav navbar-nav navbar-right">
 
 
+        <li >
+            <%= link_to 'News', articles_path  %>
+        </li>
+
         <% if user_signed_in? %>
-          <% if (current_user.role == "common") || (current_user.role == "admin") %>
               <% if current_user.children.present? %>
+          <% if (current_user.role == "common") || (current_user.role == "admin") %>
 
                 <!--si el usuario tiene cuentas hijos, que las despliegue
                  en un dropdown menu-->
@@ -147,6 +151,7 @@
        <%= submit_tag "Search", :name => nil, class: "btn btn-default" %></p>
     <% end %>
   </li>
+
   </ul>
 </div>
 </nav>
