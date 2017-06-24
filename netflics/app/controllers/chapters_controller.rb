@@ -1,5 +1,6 @@
 class ChaptersController < ApplicationController
   before_action :find_movie
+  before_action :find_chapter, only: [:edit, :update, :destroy]
   def index
 
   end
@@ -10,7 +11,7 @@ class ChaptersController < ApplicationController
   def destroy
     @chapter = Chapter.find(params[:id])
     @chapter.destroy
-    redirect_to chapters_path
+    redirect_to movie_chapters_path
   end
 
   def new
@@ -62,6 +63,9 @@ class ChaptersController < ApplicationController
     def find_movie
       @movie = Movie.find(params[:movie_id])
     end
+    def find_chapter
+			@chapter = Chapter.find(params[:id])
+		end
     def chapter_params
       params.require(:chapter).permit(:title, :duration, :movie_id)
     end
