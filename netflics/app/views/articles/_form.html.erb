@@ -2,6 +2,8 @@
 
 	<p><%= f.input :title %></p>
 	<p><%= f.input :content %></p>
+   	<p><%= f.input :tag, collection: Movie.all %></p>
+
  	<p><%= f.button :submit %></p>
 
 <% end %>

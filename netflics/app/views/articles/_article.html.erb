@@ -4,6 +4,10 @@
 
 <p><%= article.content %></p>
 
+<% if !article.tag.blank? %>
+	<p><%= link_to Movie.find(article.tag).title, movie_path(article.tag) %></p>
+<%end%>
+
 <% if user_signed_in? %>
 
 	<% if article.user_id == current_user.id%>	
