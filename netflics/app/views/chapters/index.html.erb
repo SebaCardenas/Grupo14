@@ -1,0 +1,25 @@
+
+<div class="series">
+
+
+<h1><strong>Available Accounts</strong></h1>
+
+
+    <% @movie.chapter_id.each do |chapter| %>
+            <!-- <h4 align="center"> -->
+          <div class="col-med-3">
+
+            <p class="link-movie"><%= chapter.title%></p>
+
+            <%= link_to "Edit", edit_chapter_path(chapter),
+            :class => "btn btn-primary"  %>
+
+            <%= link_to 'Delete Serie', chapter_path(chapter), method: :delete,
+            data: { confirm: 'Are you sure you want to delete '+chapter.title+'?' },
+            :class => "btn btn-danger"  %>
+
+          </div>
+
+      <%end%>
+
+</div>
