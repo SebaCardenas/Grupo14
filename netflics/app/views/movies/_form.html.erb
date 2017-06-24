@@ -1,5 +1,5 @@
 
-<%= simple_form_for @movie do |f| %>
+<%= simple_form_for @movie do |f| %>s
   <%= select_tag(:category_id, options_for_select(@categories)) %>
   <!-- <%= f.select :category_id, @categories %> -->
   <%= f.file_field :movie_img %>

@@ -6,11 +6,16 @@
 
 
 
- <p>	<%= f.input :comment %></p>
+ 	<p><%= f.input :comment %></p>
  	<p><%= f.button :submit %></p>
 
 <% end %>
 </div>
+
+ <br>
+<%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
+
+
 <script>
 	$('#rating-form').raty({
 		path: '/assets/stars/',
