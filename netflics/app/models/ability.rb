@@ -14,6 +14,7 @@ class Ability
     elsif user.common?
       can :read, :all
       can :create, Movie
+      can :create, Chapter
       can :update, :all
       can :destroy, :all
 

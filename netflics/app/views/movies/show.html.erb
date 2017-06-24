@@ -10,6 +10,7 @@
     <%= link_to 'Ver en Netflix', "https://www.google.com/search?q=netflix.com+"+link_movie+"+serie"+"&btnI=Im+Feeling+Lucky", :class=> "btn btn-custom3"  %>
     <%= link_to 'Chapters', movie_chapters_path(@movie), :class=> "btn btn-custom3"  %>
   </span>
+  <% if (current_user.id == @movie.creator) || (current_user.role == "admin")%>
     <% if @child_view.nil?%>
         <% if can? :create, Chapter %>
         <%= link_to 'Add Chapter', new_movie_chapter_path(@movie), :class => "btn btn-danger"  %>
@@ -21,6 +22,7 @@
         <%= link_to 'Delete Serie', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
         <% end %>
       <% end %>
+    <% end %>
 
 </span>
 

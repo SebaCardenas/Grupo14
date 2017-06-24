@@ -71,6 +71,7 @@ class MoviesController < ApplicationController
 
     #@movie.user_id = current_user.id
     #@movie = Movie.new(movie_params)
+    @movie.creator = current_user.id
     @movie.category_id = params[:category_id]
     puts @movie.movie_img_file_name
      if @movie.movie_img_file_name.blank?
