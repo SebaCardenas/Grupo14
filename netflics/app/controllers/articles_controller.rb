@@ -7,13 +7,15 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(articles_params)
-		@article.user_id = current_user.id
-
-		if @article.save
-			redirect_to action: "index"
-
-		else
-			render 'new'
+		if current_user.blank?
+	       redirect_to new_article_path, :alert => "ERROR: Debe estar ingresado"
+	    else
+			@article.user_id = current_user.id
+			if @article.save
+					redirect_to action: "index"
+			else
+				render 'new'
+			end
 		end
 	end
 

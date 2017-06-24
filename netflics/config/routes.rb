@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   end
   devise_scope :user do
   root to: "movies#index"
+  resources :articles
   end
   scope "/admin" do
   resources :users
-  resources :articles
 end
 
 
