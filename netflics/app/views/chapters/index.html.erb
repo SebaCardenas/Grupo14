@@ -11,6 +11,7 @@
                <div class="col-sm-4"><p class="link-movie">
               <%=chapter.title%>             -            <%= chapter.duration%> min</p>
               </div>
+              <% if user_signed_in? %>
               <% if (current_user.id == chapter.movie.creator) || (current_user.role == "admin")%>
                  <div class="col-sm-8">
                    <%= link_to "Edit", edit_movie_chapter_path(chapter.movie, chapter),
@@ -20,6 +21,7 @@
                  data: { confirm: 'Are you sure you want to delete '+chapter.title+'?' },
                  :class => "btn btn-danger"  %>
                 </div>
+                <%end%>
                 <%end%>
               </div>
 

@@ -2,23 +2,25 @@
 
 
 <h1><strong>Available Accounts</strong></h1>
+<% if user_signed_in? %>
+    <%if current_user.children.present?%>
+      <% current_user.children.each do |child| %>
+              <!-- <h4 align="center"> -->
+            <div class="col-med-3">
 
+              <p class="link-movie"><%= child.name%></p>
 
-    <% current_user.children.each do |child| %>
-            <!-- <h4 align="center"> -->
-          <div class="col-med-3">
+              <%= link_to "Edit", edit_child_path(child),
+              :class => "btn btn-primary"  %>
 
-            <p class="link-movie"><%= child.name%></p>
+              <%= link_to 'Delete Serie', child_path(child), method: :delete,
+              data: { confirm: 'Are you sure you want to delete '+child.name+'?' },
+              :class => "btn btn-danger"  %>
 
-            <%= link_to "Edit", edit_child_path(child),
-            :class => "btn btn-primary"  %>
+            </div>
 
-            <%= link_to 'Delete Serie', child_path(child), method: :delete,
-            data: { confirm: 'Are you sure you want to delete '+child.name+'?' },
-            :class => "btn btn-danger"  %>
-
-          </div>
-
-      <%end%>
+        <%end%>
+        <%end%>
+        <%end%>
 
 </div>
