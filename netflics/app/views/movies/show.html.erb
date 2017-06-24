@@ -8,7 +8,7 @@
   <span>
     <% link_movie = String.new(@movie.title.gsub(' ','+'))%>
     <%= link_to 'Ver en Netflix', "https://www.google.com/search?q=netflix.com+"+link_movie+"+serie"+"&btnI=Im+Feeling+Lucky", :class=> "btn btn-custom3"  %>
-    <%= link_to 'Chapter', movie_chapters_path(@movie), :class=> "btn btn-custom3"  %>
+    <%= link_to 'Chapters', movie_chapters_path(@movie), :class=> "btn btn-custom3"  %>
   </span>
     <% if @child_view.nil?%>
         <% if can? :create, Chapter %>
