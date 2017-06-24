@@ -1,0 +1,18 @@
+<br>
+
+<h2><%= article.title %></h2>
+
+<p><%= article.content %></p>
+
+<% if user_signed_in? %>
+
+	<% if article.user_id == current_user.id%>	
+
+	<%end%>
+
+<%end%>
+
+<p> <%=User.find(article.user_id).name%> at <%=article.created_at.to_time.strftime('%B %e %l:%M %p')%> </p>
+<br>
+
+

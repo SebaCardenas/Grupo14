@@ -1,27 +1,99 @@
 <!DOCTYPE html>
 <html>
+<%= favicon_link_tag '/favicon2.png' %>
 <%= stylesheet_link_tag "application" %>
 <%= javascript_include_tag "application" %>
 <nav class="navbar navbar-default">
 
 <div class="container">
-  <div class="navbar-header">
-      <%= link_to image_tag("/netflics_small.png"), root_path, class: "navbar-brand" %>
-  </div>
+
+
+    <div class="navbar-header">
+        <%= link_to image_tag("/netflics_small.png"), root_path, class: "navbar-brand" %>
+    </div>
 
   <ul class="nav navbar-nav navbar-right">
 
 
         <% if user_signed_in? %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-          aria-expanded="false">Hello, <%=current_user.role%> user  <%= current_user.name %> <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Edit profile", edit_user_registration_path %></li>
-            <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
-        </ul>
-      </li>
+          <% if (current_user.role == "common") || (current_user.role == "admin") %>
+              <% if current_user.children.present? %>
 
+                <!--si el usuario tiene cuentas hijos, que las despliegue
+                 en un dropdown menu-->
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                  aria-expanded="false">kids Account<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+
+                    <% current_user.children.all.each do |child| %>
+                      <li>
+                        <%= link_to child.name, movies_path(child: child.name), class: "link" %>
+                      </li>
+                    <%end%>
+
+                  </ul>
+                </li>
+
+                <!--Si tiene hijos pero no ah seleccionado ninguna cuenta, @child
+                  va a estar vacio, por lo tanto preguntamos si @child es nil
+                  para saber en que cuenta estamos-->
+
+                <li class="dropdown">
+
+                  <% if @child_view.nil? %>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                    aria-expanded="false">Hello, <%=current_user.role%> user <%= current_user.name %>
+                    <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu" role="menu">
+                      <% if current_user.role == "common" %>
+                          <li><%= link_to "New kid", new_child_path %></li>
+                      <% end%>
+                      <li><%= link_to "Edit Kids", children_path%></li>
+                      <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+                      <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
+
+                    </ul>
+                  </li>
+
+                  <% else %>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                    aria-expanded="false">Hello, Kid user
+                    <%= @child_view.name %> <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu" role="menu">
+                      <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
+
+                    </ul>
+
+                  <% end%>
+
+
+
+              <!-- Condicion si es que NO tiene cuentas hijos -->
+              <% else %>
+
+
+                <li class="dropdown">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                    aria-expanded="false">Hello, <%=current_user.role%> user  <%= current_user.name %>
+                    <span class="caret"></span></a>
+
+                  <ul class="dropdown-menu" role="menu">
+                    <li><%= link_to "Edit profile", edit_user_registration_path %></li>
+                    <li><%=link_to "Sign Out", destroy_user_session_path, method: :delete %> </li>
+                    <% if current_user.role == "common" %>
+                        <li><%= link_to "New kid", new_child_path %></li>
+                    <% end%>
+                  </ul>
+                </li>
+             <% end %>
+             <!-- Termino condición si no es un usuario "common" -->
+           <% end %>
+        <!-- condición si no es esta log_in" -->
         <%else %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -30,24 +102,26 @@
             <li><%= link_to "Sign up", new_user_registration_path%></li>
 
             <li> <%= link_to "Log in", new_user_session_path %></li>
+          </ul>
+        </li>
+
+
+
+        <% end%>
+
+    <% if @child_view.nil? %>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+        aria-expanded="false">Filter by Category <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <% Category.all.each do |category| %>
+            <li>
+              <%= link_to category.name, movies_path(category: category.name), class: "link" %>
+            </li>
+          <%end%>
         </ul>
       </li>
-
-
-        <% end %>
-
-
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-      aria-expanded="false">Filter by Category <span class="caret"></span></a>
-      <ul class="dropdown-menu" role="menu">
-        <% Category.all.each do |category| %>
-          <li>
-            <%= link_to category.name, movies_path(category: category.name), class: "link" %>
-          </li>
-        <%end%>
-      </ul>
-    </li>
+    <% end %>
 
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"

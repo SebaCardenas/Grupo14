@@ -55,4 +55,22 @@ Los logros alcanzados fueron todos los propuestos al inicio del sprint incluyend
 
 la aplicacion se puede ver en heroku: **https://obscure-castle-13714.herokuapp.com/**
 
+# Sprint N°2
+
+En esta nueva etapa del proyecto, nos enfocamos en realizar las mayorias de las funcionalidades minimas de la aplicación web. siendo las más importantes 
+
+* La diferenciación total de los roles
+* Caratulas en las series obligatorias
+* Filtrar por
+  * Categoria
+  * Nombre de series
+  * Director
+  * Actores
+
+* Rating por series
+* Reviews por series
+* Linkear las series con Netflix
+* Subirlo a un servidor online www.netflics.tk
+
+También hicimos algunas suposiciones tales como que el niño solo puede entrar a su cuenta mediante la cuenta del padre y si se quiere devolver a la cuenta principal tiene que hacer logout y login, Los admin No pueden tener cuentas de niño vinculadas.
 

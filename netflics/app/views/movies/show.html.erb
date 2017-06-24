@@ -8,21 +8,26 @@
   <span>
     <% link_movie = String.new(@movie.title.gsub(' ','+'))%>
     <%= link_to 'Ver en Netflix', "https://www.google.com/search?q=netflix.com+"+link_movie+"+serie"+"&btnI=Im+Feeling+Lucky", :class=> "btn btn-custom3"  %>
+    <%= link_to 'Chapters', movie_chapters_path(@movie), :class=> "btn btn-custom3"  %>
   </span>
+    <% if @child_view.nil?%>
+        <% if can? :create, Chapter %>
+        <%= link_to 'Add Chapter', new_movie_chapter_path(@movie), :class => "btn btn-danger"  %>
+        <% end %>
         <% if can? :update, Movie %>
         <%= link_to 'Edit Serie', edit_movie_path(@movie), :class => "btn btn-primary"  %>
         <% end %>
         <% if can? :destroy, Movie %>
         <%= link_to 'Delete Serie', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
         <% end %>
+      <% end %>
 
-      </span>
-
-
+</span>
 
     </p>
 
     <h1 class="series-title">
+
 
     <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
 
@@ -93,7 +98,7 @@
     </p>
 
 
-<h1 class="series-title" style="margin-top:50px;">
+<h1 class="series-title" style="margin-top:100px;margin-left:10px;" align="left">
   <strong>Reviews</strong>
 </h1>
     <div class = "reviews">

@@ -1,5 +1,5 @@
 
-<%= simple_form_for @movie do |f| %>
+<%= simple_form_for @movie do |f| %>s
   <%= select_tag(:category_id, options_for_select(@categories)) %>
   <!-- <%= f.select :category_id, @categories %> -->
   <%= f.file_field :movie_img %>
@@ -14,6 +14,11 @@
   <%= f.input :start_year, label: "Start Year" %>
   <%= f.input :finish_year, label: "Finish Year" %>
   <%= f.button :submit,  "Create Series", :class => "btn btn-primary"  %>
+
+  <!-- <% if (@chapters.present?) %>
+    <%= f.input :chapter_id, options_for_select(@chapters), :as => :boolean, :input_html => { :checked => "checked" }%>
+  <%end%> -->
+
 <% end %>
 
 
