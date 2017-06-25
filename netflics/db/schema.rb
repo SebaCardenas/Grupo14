@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170624231741) do
+ActiveRecord::Schema.define(version: 20170625020403) do
 
   create_table "articles", force: :cascade do |t|
     t.text     "title"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20170624231741) do
     t.string   "director"
     t.integer  "n_chapter"
     t.integer  "n_season"
-    t.integer  "start_year"
-    t.integer  "finish_year"
+    t.date     "start_year"
+    t.date     "finish_year"
     t.datetime "date_update"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

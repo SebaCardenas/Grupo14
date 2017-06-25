@@ -93,12 +93,17 @@
 
     <p>
         <strong>Start Year:</strong>
-        <%= @movie.start_year %>
+        <%= @movie.start_year.year %>
     </p>
 
     <p>
         <strong>Finish Year:</strong>
-        <%= @movie.finish_year %>
+        <% if @movie.finish_year.blank?%>
+          <%= "up_to_date" %> 
+
+        <% else%>
+          <%= @movie.finish_year %>
+          <%end%>
     </p>
 
 

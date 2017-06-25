@@ -1,18 +1,48 @@
 
-<%= simple_form_for @movie do |f| %>s
+<%= simple_form_for @movie do |f| %>
+  <%= f.label :Category %>
   <%= select_tag(:category_id, options_for_select(@categories)) %>
-  <!-- <%= f.select :category_id, @categories %> -->
+
   <%= f.file_field :movie_img %>
-  <%= f.input :title, label: "Series Title" %>
+
+  <%= f.input :title %>
+
   <%= f.input :description %>
+
   <%= f.input :country, priority: [ "Chile" ] %>
+
   <%= f.input :language%>
+
   <%= f.input :actor %>
+
   <%= f.input :director %>
+
   <%= f.input :n_chapter, label: "Number of Chapters" %>
+
   <%= f.input :n_season, label: "Number of Seasons" %>
-  <%= f.input :start_year, label: "Start Year" %>
-  <%= f.input :finish_year, label: "Finish Year" %>
+  <!-- <%= f.input :start_year, label: "Start Year" %> -->
+
+  <%= f.input :start_year, as: :date,
+  start_year: Date.today.year,
+  end_year: Date.today.year - 100,
+  discard_day: true,
+  discard_month: true,
+  order: [ :year],
+  include_blank: true,
+  default: nil,
+  :input_html => { :class => 'profile-date' } %>
+
+  <%= f.input :finish_year, as: :date,
+  start_year: Date.today.year,
+  end_year: Date.today.year - 100,
+  discard_day: true,
+  discard_month: true,
+  order: [ :year],
+  include_blank: true,
+  default: nil,
+  :input_html => { :class => 'profile-date' } %>
+
+  <!-- <%= f.input :finish_year, label: "Finish Year" %> -->
   <%= f.button :submit,  "Create Series", :class => "btn btn-primary"  %>
 
   <!-- <% if (@chapters.present?) %>
