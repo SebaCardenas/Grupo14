@@ -12,6 +12,7 @@ class Ability
       can :create, :all
       can :index, :all
       can :hello, :all
+      can :bye, :all
 
     elsif user.common?
       can :read, :all
@@ -21,6 +22,7 @@ class Ability
       can :destroy, :all
       can :index, :all
       can :hello, :all
+      can :bye, :all
 
     elsif user.child?
       can :read, :all

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :chapters
     get "hello", to: "movie"
 
+  resources :chapters do
+    get "bye", to: "chapter"
+  end
   end
   devise_scope :user do
   root to: "movies#index"

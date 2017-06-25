@@ -1,21 +1,21 @@
-<div class="col-md-6 col-md-offset-3">
-    <div class="signup-form">
-    
-		<h1>Available Articles</h1>
-		 
-		<span style="float:right;">
-			<%= link_to 'Add a new Article', new_article_path, :class => "btn btn-primary"  %>
-		</span>
+<!DOCTYPE html>
+<div class="series">
+  <h1>
+    <strong>Available Articles</strong>
+
+    <span style="float:right;">
+      <%= link_to 'Add a new Article', new_article_path, :class => "btn btn-primary"  %>
+    </span>
+  </h1>
 
 
-		<% if @articles.any? %>
-			<%= render @articles %>
 
-		<% else %>
-			<p>There are no articles! </p>
-		<% end %>
+      <% if @articles.any? %>
+          <%= render @articles %>
+    <% else %>
+      <p>There are no articles yet!</p>
+      <% end %>
 
-	</div>
+
 </div>
-
-
+</html>

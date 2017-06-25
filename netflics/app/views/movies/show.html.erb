@@ -13,9 +13,6 @@
 <% if user_signed_in? %>
   <% if (current_user.id == @movie.creator) || (current_user.role == "admin")%>
     <% if @child_view.nil?%>
-        <% if can? :create, Chapter %>
-        <%= link_to 'Add Chapter', new_movie_chapter_path(@movie), :class => "btn btn-danger"  %>
-        <% end %>
         <% if can? :update, Movie %>
         <%= link_to 'Edit Serie', edit_movie_path(@movie), :class => "btn btn-primary"  %>
         <% end %>
