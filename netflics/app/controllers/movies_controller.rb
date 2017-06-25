@@ -6,7 +6,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     to_find = current_user.watchedseries
     answer = ""
-
+    puts "hOALASOIAJSAJSLAKJSLAKSJAKLSJLAKSJAJKSKJLSKLSJKL"
     if to_find.nil?
       answer = @movie.id.to_s + ','
     else
@@ -97,7 +97,7 @@ class MoviesController < ApplicationController
      elsif @movie.n_chapter.blank? || @movie.n_chapter <= 0
        redirect_to new_movie_path, :alert => "ERROR: Número de capitulos debe ser mayor a 1"
      elsif @movie.n_season.blank? ||@movie.n_season <= 0
-       redirect_to new_movie_path, :alert => "ERROR: Número de temporadas debe ser mayor a 1" 
+       redirect_to new_movie_path, :alert => "ERROR: Número de temporadas debe ser mayor a 1"
      else
 
       if @movie.save

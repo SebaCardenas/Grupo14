@@ -36,15 +36,13 @@
       <div class="[ form-group ]">
 
           <div class="[ btn-group ]">
-              <label for="fancy-checkbox-success" class="[ btn btn-success ]">
-                <% puts "HOLAAAAAA" %>
-
+            <label for="fancy-checkbox-success" class="[ btn btn-success ]">
                   <% to_find = current_user.watchedseries %>
                   <% if to_find.nil?%>
 
-                  <span> X </span>
+                    <span> X </span>
                   <%elsif to_find.include? @movie.id.to_s %>
-                  <span class="[ glyphicon glyphicon-ok ]"> </span>
+                  <span>✓</span>
                   <%else%>
                   <span> X </span>
                   <%end %>
