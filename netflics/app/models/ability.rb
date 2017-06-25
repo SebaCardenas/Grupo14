@@ -5,7 +5,7 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.create(role: "guest") # guest user (not logged in)
-
+    user.watchedseries = nil
     if user.admin?
       can :manage, :all
       can :update, :all
