@@ -99,10 +99,10 @@
     <p>
         <strong>Finish Year:</strong>
         <% if @movie.finish_year.blank?%>
-          <%= "up_to_date" %> 
+          <%= "up_to_date" %>
 
         <% else%>
-          <%= @movie.finish_year %>
+          <%= @movie.finish_year.year %>
           <%end%>
     </p>
 

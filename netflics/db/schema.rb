@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 20170625020403) do
     t.string   "role",                   default: "common", null: false
     t.string   "name",                   default: "",       null: false
     t.string   "lastname",               default: "",       null: false
+    t.string   "watchedseries"
+    t.string   "watchedchapters"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
