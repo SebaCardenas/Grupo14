@@ -30,6 +30,52 @@
 
     </p>
 
+    <p>
+      <%if (can? :index, :all) && !(current_user.nil?) %>
+
+      <div class="[ form-group ]">
+
+          <div class="[ btn-group ]">
+              <label for="fancy-checkbox-success" class="[ btn btn-success ]">
+                <% puts "HOLAAAAAA" %>
+
+                  <% to_find = current_user.watchedseries %>
+                  <% if to_find.nil?%>
+
+                  <span> X </span>
+                  <%elsif to_find.include? @movie.id.to_s %>
+                  <span class="[ glyphicon glyphicon-ok ]"> </span>
+                  <%else%>
+                  <span> X </span>
+                  <%end %>
+
+              </label>
+
+                <% if to_find.nil?%>
+                <label>
+                <%= link_to "Seen Serie?", movie_hello_path(@movie), :class => "btn btn-default" %>
+              </label>
+              </label>
+
+                  <%elsif current_user.watchedseries.include? @movie.id.to_s+',' %>
+                  <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
+                  Already Seen Serie!
+                  <%else%>
+                  <label>
+                  <%= link_to "Seen Serie?", movie_hello_path(@movie), :class => "btn btn-default" %>
+                </label>
+                  <%end %>
+
+              </label>
+          </div>
+      </div>
+
+
+        <%end%>
+      </p>
+
+
+
     <h1 class="series-title">
 
 

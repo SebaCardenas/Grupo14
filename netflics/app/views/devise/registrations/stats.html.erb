@@ -1,7 +1,9 @@
 <div class="col-md-6 col-md-offset-3">
-    <div class="signup-form">
-
         <h2><%= resource_name.to_s.humanize %> Statistics</h2>
 
+	<p>
+    Download:
+  	<%= link_to "CSV", users_path(format: "csv") %> 
+	</p>
     </div>
 </div>

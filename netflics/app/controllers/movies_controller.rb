@@ -2,6 +2,23 @@ class MoviesController < ApplicationController
   load_and_authorize_resource
   before_action :define_variables, only: [:index, :show]
 
+  def hello
+    @movie = Movie.find(params[:movie_id])
+    to_find = current_user.watchedseries
+    answer = ""
+
+    if to_find.nil?
+      answer = @movie.id.to_s + ','
+    else
+      answer = to_find.to_s + @movie.id.to_s + ','
+    end
+
+    current_user.update_attribute :watchedseries, answer
+
+    redirect_to movie_path(@movie)
+  end
+
+
   def index
 
     if params[:search]
@@ -67,8 +84,9 @@ class MoviesController < ApplicationController
     @categories = Category.all.map { |c| [c.name, c.id] }
   end
 
-  def create
 
+
+  def create
     #@movie.user_id = current_user.id
     #@movie = Movie.new(movie_params)
     @movie.creator = current_user.id
