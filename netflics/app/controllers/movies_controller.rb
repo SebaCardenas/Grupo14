@@ -1,6 +1,23 @@
 class MoviesController < ApplicationController
   load_and_authorize_resource
 
+  def hello
+    @movie = Movie.find(params[:movie_id])
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    puts 'asdsadsa'
+    redirect_to movie_path(@movie)
+  end
+
   def index
     if params[:search]
       @movies = Movie.search(params[:search]).order("created_at DESC")
