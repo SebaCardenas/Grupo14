@@ -2,11 +2,11 @@
   <p>
     <%= link_to 'Back to Serie', movie_path(@movie.id), :class => "btn btn-primary"  %>
 
-  <span style="float:right;">
-    <% if can? :create, Chapter %>
-    <%= link_to 'Add Chapter', new_movie_chapter_path(@movie), :class => "btn btn-custom4"  %>
-    <% end %>
-  </span>
+    <span style="float:right;">
+      <% if can? :create, Chapter %>
+      <%= link_to 'Add Chapter', new_movie_chapter_path(@movie), :class => "btn btn-custom4"  %>
+      <% end %>
+    </span>
   </p>
   <h1>
     <strong>Chapters of
@@ -16,70 +16,68 @@
 
   <% @movie.chapters.each do |chapter| %>
   <!-- <h4 align="center"> -->
-  <div class="page">
-    <div class="movie-list">
-      <h4 class="movie">
-        <%=chapter.title%>
-        -
-        <%= chapter.duration%>
-        min</h4>
-    </div>
+  <div class="reviews">
+    <h4>
+      <%=chapter.title%>
+      -
+      <%= chapter.duration%>
+      min</h4>
     <% if user_signed_in? %>
     <% if (current_user.id == chapter.movie.creator) || (current_user.role == "admin")%>
-    <div class="col-sm-8">
-      <%= link_to "Edit", edit_movie_chapter_path(chapter.movie, chapter),
+    <%= link_to "Edit", edit_movie_chapter_path(chapter.movie, chapter),
                  :class => "btn btn-primary"  %>
 
-      <%= link_to 'Delete Serie', movie_chapter_path(chapter.movie, chapter), method: :delete,
+    <%= link_to 'Delete Serie', movie_chapter_path(chapter.movie, chapter), method: :delete,
                  data: { confirm: 'Are you sure you want to delete '+chapter.title+'?' },
                  :class => "btn btn-danger"  %>
 
-      <%if (can? :index, :all) && !(current_user.nil?) %>
+    <%if (can? :index, :all) && !(current_user.nil?) %>
 
-          <span class="[ form-group ]">
-            <span class="[ btn-group ]">
-              <label for="fancy-checkbox-success" class="[ btn btn-success ]">
-                <%puts "HOLIIIIIIIII" %>
-                <% puts chapter.id %>
-                <% to_find = current_user.watchedchapters %>
-                <% if to_find.nil?%>
+    <span class="[ form-group ]">
+      <span class="[ btn-group ]">
+        <label for="fancy-checkbox-success" class="[ btn btn-success ]">
+          <%puts "HOLIIIIIIIII" %>
+          <% puts chapter.id %>
+          <% to_find = current_user.watchedchapters %>
+          <% if to_find.nil?%>
 
-                <span>
-                  X
-                </span>
-                <%elsif to_find.include? chapter.id.to_s %>
-                <span>✓</span>
-                <%else%>
-                <span>
-                  X
-                </span>
-                <%end %>
-
-              </label>
-
-              <% if to_find.nil?%>
-              <label>
-                <%= link_to "Seen Chapter?", movie_chapter_bye_path(chapter.movie, chapter), :class => "btn btn-default" %>
-              </label>
-
-              <%elsif current_user.watchedchapters.include? chapter.id.to_s+',' %>
-              <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
-                Already Seen Chapter!
-              </label>
-              <%else%>
-              <label>
-                <%= link_to "Seen Chapter?", movie_chapter_bye_path(chapter.movie, chapter), :class => "btn btn-default" %>
-              </label>
-              <%end%>
-
-            </span>
+          <span>
+            X
           </span>
+          <%elsif to_find.include? chapter.id.to_s %>
+          <span>✓</span>
+          <%else%>
+          <span>
+            X
+          </span>
+          <%end %>
 
+        </label>
 
-      <%end%>
-    </div>
+        <% if to_find.nil?%>
+        <label>
+          <%= link_to "Seen Chapter?", movie_chapter_bye_path(chapter.movie, chapter), :class => "btn btn-default" %>
+        </label>
+
+        <%elsif current_user.watchedchapters.include? chapter.id.to_s+',' %>
+        <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
+          Already Seen Chapter!
+        </label>
+        <%else%>
+        <label>
+          <%= link_to "Seen Chapter?", movie_chapter_bye_path(chapter.movie, chapter), :class => "btn btn-default" %>
+        </label>
+        <%end%>
+
+      </span>
+    </span>
+
     <%end%>
-  <%end%>
+
+    <%end%>
+    <%end%>
   </div>
+  <br>
+
   <%end%>
 </div>

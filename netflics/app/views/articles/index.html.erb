@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div class="series">
+      <div class="series">
   <h1>
     <strong>Available Articles</strong>
 
@@ -11,7 +11,10 @@
 
 
       <% if @articles.any? %>
+
           <%= render @articles %>
+
+      <br>
     <% else %>
       <p>There are no articles yet!</p>
       <% end %>
