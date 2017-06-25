@@ -39,18 +39,22 @@ class ChaptersController < ApplicationController
     @movie.chapter_id = @chapter.id
 
     if @chapter.duration.blank?
-      redirect_to new_movie_path, :alert => "ERROR: Debe agregar la duración del capitulo"
+      redirect_to new_movie_chapter_path, :alert => "ERROR: Debe agregar la duración del capitulo"
 
     elsif @chapter.duration < 0
-      redirect_to new_movie_path, :alert => "ERROR: La duración tiene que ser mayor a 0"
+      redirect_to new_movie_chapter_path, :alert => "ERROR: La duración tiene que ser mayor a 0"
 
-    if @chapter.save
-        redirect_to movie_path(@movie)
+    elsif @chapter.season.blank? || @chapter.season < 1
+      redirect_to new_movie_chapter_path, :alert => "ERROR: Debe agregar un número de temporadas positivo"
     else
-      render 'new'
-    end
-  end
 
+      if @chapter.save
+          redirect_to movie_path(@movie)
+      else
+        render 'new'
+      end
+    end
+end
 
   private
     def find_movie
@@ -60,6 +64,6 @@ class ChaptersController < ApplicationController
 			@chapter = Chapter.find(params[:id])
 		end
     def chapter_params
-      params.require(:chapter).permit(:title, :duration, :movie_id)
+      params.require(:chapter).permit(:title, :duration, :movie_id, :season)
     end
 end
