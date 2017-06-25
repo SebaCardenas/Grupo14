@@ -51,8 +51,9 @@ class MoviesController < ApplicationController
     @categories = Category.all.map { |c| [c.name, c.id] }
   end
 
-  def create
 
+
+  def create
     #@movie.user_id = current_user.id
     #@movie = Movie.new(movie_params)
     @movie.category_id = params[:category_id]

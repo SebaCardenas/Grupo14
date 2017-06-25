@@ -12,6 +12,16 @@ user.password = 'admin1'
 user.password_confirmation = 'admin1'
 user.save!
 
+user = User.new
+user.email = 'juan@gmail.com'
+user.role = 'common'
+user.name = 'Juan'
+user.password = '123456'
+user.password_confirmation = '123456'
+user.watchedseries = "1,"
+user.save!
+
+
 category_list = ['Other', 'Action', 'Horror', 'Comedy', 'Drama', 'Sci-Fi', 'Politics', 'Kids']
 
 category_list.each do |c|
