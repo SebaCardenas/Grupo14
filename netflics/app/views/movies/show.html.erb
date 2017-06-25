@@ -32,7 +32,7 @@
                 <% puts "HOLAAAAAA" %>
                 <% to_find = current_user.watchedseries %>
                 <% if to_find.nil?%>
-                <% puts "HOLAAAAAA2222" %>
+
                 <span> X </span>
                 <%elsif to_find.include? @movie.id.to_s %>
                 <span class="[ glyphicon glyphicon-ok ]"> </span>
@@ -41,17 +41,20 @@
                 <%end %>
 
               </label>
+
                 <% if to_find.nil?%>
-                <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
-                <%= link_to "Seen Serie?", movie_hello_path(@movie) %>
-
-
+                <label>
+                <%= link_to "Seen Serie?", movie_hello_path(@movie), :class => "btn btn-default" %>
+              </label>
               </label>
 
-                  <%elsif to_find.include? @movie.id.to_s %>
-                  Not Seen Serie?
+                  <%elsif current_user.watchedseries.include? @movie.id.to_s+',' %>
+                  <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
+                  Already Seen Serie!
                   <%else%>
-                  Seen Serie?
+                  <label>
+                  <%= link_to "Seen Serie?", movie_hello_path(@movie), :class => "btn btn-default" %>
+                </label>
                   <%end %>
 
               </label>
@@ -66,7 +69,6 @@
 
     <h1 class="series-title">
 
-            <%= link_to "Label", movie_hello_path(@movie)  %>
 
     <%= image_tag @movie.movie_img.url(:movie_show), class: "movie-show" %>
 

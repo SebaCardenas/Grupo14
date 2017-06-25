@@ -19,10 +19,12 @@ class Ability
       can :update, :all
       can :destroy, :all
       can :index, :all
+      can :hello, :all
 
     elsif user.child?
       can :read, :all
       can :index, :all
+
     else #Guest user
       can :read, :all
 

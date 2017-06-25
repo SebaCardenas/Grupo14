@@ -3,20 +3,20 @@ class MoviesController < ApplicationController
 
   def hello
     @movie = Movie.find(params[:movie_id])
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
-    puts 'asdsadsa'
+    to_find = current_user.watchedseries
+    answer = ""
+
+    if to_find.nil?
+      answer = @movie.id.to_s + ','
+    else
+      answer = to_find.to_s + @movie.id.to_s + ','
+    end
+
+    current_user.update_attribute :watchedseries, answer
+
     redirect_to movie_path(@movie)
   end
+
 
   def index
     if params[:search]
