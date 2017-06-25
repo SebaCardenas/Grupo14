@@ -96,6 +96,19 @@
         <strong>Category:</strong>
         <%= @movie.category.name %>
     </h1>
+    <%contador = 0%>
+    <% @movie.chapters.each do |chapter| %>
+      <% contador = contador + chapter.duration %>
+    <%end%>
+
+    <p>
+        <strong>Total Duration:</strong>
+        <%if contador == 0%>
+          <%= "Indefinido" %>
+        <%else%>
+            <%= contador.to_s + " - min"%>
+        <%end%>
+    </p>
 
     <p class="series-desc">
 

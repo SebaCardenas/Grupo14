@@ -94,10 +94,19 @@ class MoviesController < ApplicationController
     puts @movie.movie_img_file_name
      if @movie.movie_img_file_name.blank?
        redirect_to new_movie_path, :alert => "ERROR: Debe agregar una imagen"
+
      elsif @movie.n_chapter.blank? || @movie.n_chapter <= 0
        redirect_to new_movie_path, :alert => "ERROR: Número de capitulos debe ser mayor a 1"
+
      elsif @movie.n_season.blank? ||@movie.n_season <= 0
        redirect_to new_movie_path, :alert => "ERROR: Número de temporadas debe ser mayor a 1"
+
+     elsif @movie.start_year.blank?
+       redirect_to new_movie_path, :alert => "ERROR: Debe ingresar un año de inicio"
+
+     elsif @movie.start_year > @movie.finish_year
+       redirect_to new_movie_path, :alert => "ERROR: El año no puede ser mayor que el año de inicio"
+       
      else
 
       if @movie.save

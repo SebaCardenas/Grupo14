@@ -9,7 +9,7 @@
             <!-- <h4 align="center"> -->
             <div class="row">
                <div class="col-sm-4"><p class="link-movie">
-              <%=chapter.title%>             -            <%= chapter.duration%> min</p>
+              <%=chapter.title%>           -            <%= chapter.duration%> min; S: <%=chapter.season%> </p>
               </div>
               <% if user_signed_in? %>
               <% if (current_user.id == chapter.movie.creator) || (current_user.role == "admin")%>
