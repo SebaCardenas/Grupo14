@@ -43,7 +43,9 @@
               </label>
                 <% if to_find.nil?%>
                 <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
-                <%= link_to "Seen Serie?", "https://matias.ma/nsfw/" %>
+                <%= link_to "Seen Serie?", movie_hello_path(@movie) %>
+
+
               </label>
 
                   <%elsif to_find.include? @movie.id.to_s %>
