@@ -24,10 +24,25 @@
 
     <% @movies.each do |movie| %>
 
-        <div class="movie">
 
-
+            <%if !(user_signed_in?) %>
+              <% if movie.creator == 1 %>
+                <div class="movie">
             <!-- <h4 align="center"> -->
+                  <figure class="movie-poster">
+                  <a href="/movies/<%= movie.id %>">
+                  <%= image_tag movie.movie_img.url(:movie_index), class: "movie"%>
+                  </figure>
+                <div class="movie-title" align="center">
+                  <p class="link-movie"><%= movie.title%></p>
+                </div>
+                </a>
+              </div>
+            <%else %>
+            <%end %>
+          <%else%>
+          <div class="movie">
+      <!-- <h4 align="center"> -->
             <figure class="movie-poster">
             <a href="/movies/<%= movie.id %>">
             <%= image_tag movie.movie_img.url(:movie_index), class: "movie"%>
@@ -37,6 +52,8 @@
           </div>
           </a>
         </div>
+        <% end %> 
+
         <!-- </h4> -->
 
 
