@@ -1,5 +1,8 @@
-<% if user_signed_in? %>
 <div class="col-md-6 col-md-offset-3">
+    <div class="new-movie-form">
+      <div class="review">
+<% if user_signed_in? %>
+
      <h1><%= resource_name.to_s.humanize %> Statistics</h1>
      <%nombres1 = Array.[]%>
 
@@ -67,7 +70,9 @@
     Download:
   	<%= link_to "CSV", users_path(format: "csv") %>
 	</h3>
-    </div>
-</div>
 
-<%end%>
+<%end%>
+
+</div>
+</div>
+</div>
