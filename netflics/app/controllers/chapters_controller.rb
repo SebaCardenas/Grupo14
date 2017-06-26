@@ -1,6 +1,25 @@
 class ChaptersController < ApplicationController
   before_action :find_movie
   before_action :find_chapter, only: [:edit, :update, :destroy]
+
+  def bye
+    @chapter = Chapter.find(params[:chapter_id])
+    to_find = current_user.watchedchapters
+    answer = ""
+    puts "hOALASOIAJSAJSLAKJSLAKSJAKLSJLAKSJAJKSKJLSKLSJKL"
+    if to_find.nil?
+      answer = @chapter.id.to_s + ','
+    else
+      answer = to_find.to_s + @chapter.id.to_s + ','
+    end
+
+    current_user.update_attribute :watchedchapters, answer
+
+    redirect_to movie_chapters_path
+  end
+
+
+
   def index
 
   end
