@@ -17,8 +17,11 @@ Rails.application.routes.draw do
   devise_scope :user do
   root to: "movies#index"
   get "stats", to: "registrations#stats"
+
   end
   scope "/admin" do
-  resources :users
+  resources :users do
+
+  end
   end
 end

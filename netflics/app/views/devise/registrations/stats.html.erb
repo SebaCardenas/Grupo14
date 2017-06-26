@@ -1,25 +1,49 @@
 <% if user_signed_in? %>
 <div class="col-md-6 col-md-offset-3">
      <h1><%= resource_name.to_s.humanize %> Statistics</h1>
+     <%nombres1 = Array.[]%>
 
      <h3>Already seen series:</h3>
      <%if !current_user.watchedseries.blank?%>
 		<% current_user.watchedseries.split(",").each  do  |s|%>
           	<p><%=Movie.find(s).title%></p>
+            <%nombres1.push(Movie.find(s).title)%>
 	    <%end%>
     <%else%>
 		<p>None</p>
     <%end%>
 
- 	<h3>Incomplete series:</h3>
+    <%nombres = Array.[]%>
+    <h3>Incomplete series:</h3>
     <%if !current_user.watchedchapters.blank?%>
-		<% current_user.watchedchapters.split(",").each  do  |s|%>
-          	<p><%=Chapter.find(s).movie.title%></p>
-	    <%end%>
-    <%else%>
-		<p>None</p>
-    <%end%>
 
+      <%current_user.watchedchapters.split(",").each  do  |s|%>
+        <%name =  Chapter.find(s).movie.title%>
+        <%contador = 0%>
+        <% if !nombres1.include?(name)%>
+          <%current_user.watchedchapters.split(",").each  do  |ss|%>
+            <%name2 =  Chapter.find(ss).movie.title%>
+              <% if name == name2%>
+                <%contador = contador +1%>
+              <%end%>
+          <%end%>
+          <% Movie.all.each do |m|%>
+              <%if m.title == name && m.chapters.count > contador%>
+
+                <%if !nombres.include?(name)%>
+                  <%nombres.push(name)%>
+                <%end%>
+              <%end%>
+          <%end%>
+          <%end%>
+          <%end%>
+      <%else%>
+  		<p>None</p>
+      <%end%>
+
+    <%nombres.each do |d|%>
+    <%=d%>
+    <%end%>
  	<h3>Total Time Spent:</h3>
 		<%total = 0%>
 		<% Movie.all.each  do  |m|%>
@@ -46,4 +70,4 @@
     </div>
 </div>
 
-<%end%>
+<%end%>
