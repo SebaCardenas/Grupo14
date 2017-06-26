@@ -28,7 +28,7 @@
     </p>
 
     <p>
-      <%if (can? :index, :all) && !(current_user.nil?) %>
+      <%if (@child_view.nil?) && (can? :index, :all) && !(current_user.nil?)  %>
 
       <div class="[ form-group ]">
 

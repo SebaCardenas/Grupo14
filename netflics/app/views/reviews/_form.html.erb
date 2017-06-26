@@ -1,4 +1,4 @@
-<div class="reviews">
+
 <%= simple_form_for([@movie, @movie.reviews.build]) do |f|%>
 	<div class= "average-review-rating" id="rating-form">
 
@@ -10,10 +10,10 @@
  	<p><%= f.button :submit %></p>
 
 <% end %>
-</div>
+
+<%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
 
  <br>
-<%= link_to 'Back to index', movies_path, :class => "btn btn-info"  %>
 
 
 <script>

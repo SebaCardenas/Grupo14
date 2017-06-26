@@ -14,10 +14,12 @@
 
   <ul class="nav navbar-nav navbar-right">
 
-
+        <%if (@child_view.nil?) %>
         <li >
             <%= link_to 'News', articles_path  %>
         </li>
+        <%end %>
+
 
         <% if user_signed_in? %>
         <% if (current_user.role == "common") || (current_user.role == "admin") %>

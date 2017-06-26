@@ -18,6 +18,7 @@ class Ability
       can :read, :all
       can :create, Movie
       can :create, Chapter
+      can :create, Review
       can :update, :all
       can :destroy, :all
       can :index, :all
