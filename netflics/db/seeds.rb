@@ -103,6 +103,42 @@ s.movie_img = image_file
 s.save!
 
 
+s = Movie.new
+s.title = "Hercules"
+s.description = "The son of the Greek Gods Zeus and Hera is stripped of his immortality as an infant and must become a true hero in order to reclaim it."
+s.country = "US"
+s.language = "English"
+s.actor = 	"Tate Donovan, Susan Egan, James Woods"
+s.director = "Ron Clements, John Musker"
+s.n_chapter = 15
+s.n_season = 2
+s.start_year = DateTime.new(1997, 1, 1)
+s.finish_year = DateTime.new(1999, 1, 1)
+s.creator = 1
+s.category_id = 8
+image_path = "#{Rails.root}/app/assets/images/hercules.jpeg"
+image_file = File.new(image_path)
+s.movie_img = image_file
+s.save!
+
+s = Movie.new
+s.title = "Scooby Doo"
+s.description = "After an acrimonious break up, the Mystery Inc. gang are individually brought to an island resort to investigate strange goings on."
+s.country = "US"
+s.language = "English"
+s.actor = 	" Matthew Lillard, Freddie Prinze Jr., Sarah Michelle Gellar"
+s.director = "Raja Gosnell"
+s.n_chapter = 10
+s.n_season = 3
+s.start_year = DateTime.new(1969, 1, 1)
+s.finish_year = DateTime.new(1970, 1, 1)
+s.creator = 1
+s.category_id = 8
+image_path = "#{Rails.root}/app/assets/images/scooby.jpg"
+image_file = File.new(image_path)
+s.movie_img = image_file
+s.save!
+
 
 # cat = Category.new
 # cat.name = 'Horror'

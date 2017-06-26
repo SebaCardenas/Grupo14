@@ -4,11 +4,14 @@
     <strong>Available Articles</strong>
 
     <span style="float:right;">
+
+      <% if user_signed_in?%>
+        <% if !(current_user.role == "child") %>
       <%= link_to 'Add a new Article', new_article_path, :class => "btn btn-primary"  %>
+        <%end %>
+      <%end %>
     </span>
   </h1>
-
-
 
       <% if @articles.any? %>
 

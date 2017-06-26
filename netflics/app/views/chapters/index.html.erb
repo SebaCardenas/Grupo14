@@ -4,7 +4,11 @@
 
     <span style="float:right;">
       <% if can? :create, Chapter %>
+      <% if user_signed_in? %>
+      <% if (current_user.id == @movie.creator) || (current_user.role == "admin")%>
       <%= link_to 'Add Chapter', new_movie_chapter_path(@movie), :class => "btn btn-custom4"  %>
+      <% end %>
+      <% end %>
       <% end %>
     </span>
   </p>
