@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529004332) do
+ActiveRecord::Schema.define(version: 20170625195622) do
 
   create_table "articles", force: :cascade do |t|
     t.text     "title"
@@ -18,12 +18,22 @@ ActiveRecord::Schema.define(version: 20170529004332) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.integer  "tag"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "chapters", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "movie_id"
+    t.integer  "season"
   end
 
   create_table "children", force: :cascade do |t|
@@ -44,8 +54,8 @@ ActiveRecord::Schema.define(version: 20170529004332) do
     t.string   "director"
     t.integer  "n_chapter"
     t.integer  "n_season"
-    t.integer  "start_year"
-    t.integer  "finish_year"
+    t.date     "start_year"
+    t.date     "finish_year"
     t.datetime "date_update"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -55,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170529004332) do
     t.string   "movie_img_content_type"
     t.integer  "movie_img_file_size"
     t.datetime "movie_img_updated_at"
+    t.integer  "chapter_id"
   end
 
   create_table "news", force: :cascade do |t|
@@ -89,6 +100,8 @@ ActiveRecord::Schema.define(version: 20170529004332) do
     t.string   "role",                   default: "common", null: false
     t.string   "name",                   default: "",       null: false
     t.string   "lastname",               default: "",       null: false
+    t.string   "watchedseries"
+    t.string   "watchedchapters"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

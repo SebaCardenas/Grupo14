@@ -8,7 +8,10 @@
   <span>
     <% link_movie = String.new(@movie.title.gsub(' ','+'))%>
     <%= link_to 'Ver en Netflix', "https://www.google.com/search?q=netflix.com+"+link_movie+"+serie"+"&btnI=Im+Feeling+Lucky", :class=> "btn btn-custom3"  %>
+    <%= link_to 'Chapters', movie_chapters_path(@movie), :class=> "btn btn-custom3"  %>
   </span>
+<% if user_signed_in? %>
+  <% if (current_user.id == @movie.creator) || (current_user.role == "admin")%>
     <% if @child_view.nil?%>
         <% if can? :update, Movie %>
         <%= link_to 'Edit Serie', edit_movie_path(@movie), :class => "btn btn-primary"  %>
@@ -17,13 +20,56 @@
         <%= link_to 'Delete Serie', movie_path(@movie),method: :delete, data: { confirm: 'Are you sure you want to delete '+@movie.title+'?' } , :class => "btn btn-danger"  %>
         <% end %>
       <% end %>
-
+    <% end %>
+  <% end %>
 
 </span>
 
-
-
     </p>
+
+    <p>
+      <%if (@child_view.nil?) && (can? :index, :all) && !(current_user.nil?)  %>
+
+      <div class="[ form-group ]">
+
+          <div class="[ btn-group ]">
+            <label for="fancy-checkbox-success" class="[ btn btn-success ]">
+                  <% to_find = current_user.watchedseries %>
+                  <% if to_find.nil?%>
+
+                    <span> X </span>
+                  <%elsif to_find.include? @movie.id.to_s %>
+                  <span>✓</span>
+                  <%else%>
+                  <span> X </span>
+                  <%end %>
+
+              </label>
+
+                <% if to_find.nil?%>
+                <label>
+                <%= link_to "Seen Serie?", movie_hello_path(@movie), :class => "btn btn-default" %>
+              </label>
+              </label>
+
+                  <%elsif current_user.watchedseries.include? @movie.id.to_s+',' %>
+                  <label for="fancy-checkbox-success" class="[ btn btn-default active ]">
+                  Already Seen Serie!
+                  <%else%>
+                  <label>
+                  <%= link_to "Seen Serie?", movie_hello_path(@movie), :class => "btn btn-default" %>
+                </label>
+                  <%end %>
+
+              </label>
+          </div>
+      </div>
+
+
+        <%end%>
+      </p>
+
+
 
     <h1 class="series-title">
 
@@ -47,6 +93,19 @@
         <strong>Category:</strong>
         <%= @movie.category.name %>
     </h1>
+    <%contador = 0%>
+    <% @movie.chapters.each do |chapter| %>
+      <% contador = contador + chapter.duration %>
+    <%end%>
+
+    <p>
+        <strong>Total Duration:</strong>
+        <%if contador == 0%>
+          <%= "Indefinido" %>
+        <%else%>
+            <%= contador.to_s + " - min"%>
+        <%end%>
+    </p>
 
     <p class="series-desc">
 
@@ -88,12 +147,17 @@
 
     <p>
         <strong>Start Year:</strong>
-        <%= @movie.start_year %>
+        <%= @movie.start_year.year %>
     </p>
 
     <p>
         <strong>Finish Year:</strong>
-        <%= @movie.finish_year %>
+        <% if @movie.finish_year.blank?%>
+          <%= "Up to date" %>
+
+        <% else%>
+          <%= @movie.finish_year.year %>
+          <%end%>
     </p>
 
 

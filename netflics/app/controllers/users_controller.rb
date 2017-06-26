@@ -1,12 +1,17 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
-  load_and_authorize_resource
-end
+	before_filter :authenticate_user!
+	load_and_authorize_resource
 
-def new
 
-end
+	def index
+	    @users = User.all
+	    respond_to do |format|
+	      format.html
+	      format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+	    end
+	end
 
-def create
+
+
 
 end

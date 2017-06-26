@@ -12,6 +12,16 @@ user.password = 'admin1'
 user.password_confirmation = 'admin1'
 user.save!
 
+user = User.new
+user.email = 'juan@gmail.com'
+user.role = 'common'
+user.name = 'Juan'
+user.password = '123456'
+user.password_confirmation = '123456'
+user.watchedseries = "1,"
+user.save!
+
+
 category_list = ['Other', 'Action', 'Horror', 'Comedy', 'Drama', 'Sci-Fi', 'Politics', 'Kids']
 
 category_list.each do |c|
@@ -29,8 +39,8 @@ s.actor = "	Dominic Purcell"
 s.director = "Paul Scheuring"
 s.n_chapter = 22
 s.n_season = 1
-s.start_year = 2005
-s.finish_year = 2006
+s.start_year = DateTime.new(2005, 1, 1)
+s.finish_year = DateTime.new(2006, 1, 1)
 s.creator = 1
 s.category_id = 2
 image_path = "#{Rails.root}/app/assets/images/prison-break.jpg"
@@ -47,8 +57,8 @@ s.actor = "Naveen Andrews, Emilie de Ravin, Matthew Fox, Jorge Garcia, Maggie Gr
 s.director = "J.J. Abrams"
 s.n_chapter = 23
 s.n_season = 3
-s.start_year = 2006
-s.finish_year = 2007
+s.start_year = DateTime.new(2006, 1, 1)
+s.finish_year = DateTime.new(2007, 1, 1)
 s.creator = 1
 s.category_id = 6
 image_path = "#{Rails.root}/app/assets/images/lost.jpg"
@@ -65,8 +75,8 @@ s.actor = 	"Jennifer Aniston, Courteney Cox, Lisa Kudrow, Matt LeBlanc, Matthew 
 s.director = "David Crane, Marta Kauffman"
 s.n_chapter = 24
 s.n_season = 5
-s.start_year = 1998
-s.finish_year = 1999
+s.start_year = DateTime.new(1998, 1, 1)
+s.finish_year = DateTime.new(1999, 1, 1)
 s.creator = 1
 s.category_id = 4
 image_path = "#{Rails.root}/app/assets/images/friends.jpg"
@@ -83,8 +93,8 @@ s.actor = 	"JEd O'Neill, Sofía Vergara, Julie Bowen, Ty Burrell, Jesse Tyler Fe
 s.director = "Christopher Lloyd, Steven Levitan"
 s.n_chapter = 22
 s.n_season = 8
-s.start_year = 2016
-s.finish_year = 2017
+s.start_year = DateTime.new(2016, 1, 1)
+s.finish_year = DateTime.new(2017, 1, 1)
 s.creator = 1
 s.category_id = 4
 image_path = "#{Rails.root}/app/assets/images/modern-family.png"
@@ -92,6 +102,42 @@ image_file = File.new(image_path)
 s.movie_img = image_file
 s.save!
 
+
+s = Movie.new
+s.title = "Hercules"
+s.description = "The son of the Greek Gods Zeus and Hera is stripped of his immortality as an infant and must become a true hero in order to reclaim it."
+s.country = "US"
+s.language = "English"
+s.actor = 	"Tate Donovan, Susan Egan, James Woods"
+s.director = "Ron Clements, John Musker"
+s.n_chapter = 15
+s.n_season = 2
+s.start_year = DateTime.new(1997, 1, 1)
+s.finish_year = DateTime.new(1999, 1, 1)
+s.creator = 1
+s.category_id = 8
+image_path = "#{Rails.root}/app/assets/images/hercules.jpeg"
+image_file = File.new(image_path)
+s.movie_img = image_file
+s.save!
+
+s = Movie.new
+s.title = "Scooby Doo"
+s.description = "After an acrimonious break up, the Mystery Inc. gang are individually brought to an island resort to investigate strange goings on."
+s.country = "US"
+s.language = "English"
+s.actor = 	" Matthew Lillard, Freddie Prinze Jr., Sarah Michelle Gellar"
+s.director = "Raja Gosnell"
+s.n_chapter = 10
+s.n_season = 3
+s.start_year = DateTime.new(1969, 1, 1)
+s.finish_year = DateTime.new(1970, 1, 1)
+s.creator = 1
+s.category_id = 8
+image_path = "#{Rails.root}/app/assets/images/scooby.jpg"
+image_file = File.new(image_path)
+s.movie_img = image_file
+s.save!
 
 
 # cat = Category.new

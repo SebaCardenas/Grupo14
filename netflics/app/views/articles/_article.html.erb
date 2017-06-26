@@ -1,18 +1,23 @@
-<br>
-
-<h2><%= article.title %></h2>
+<div class="reviews">
+<h2><strong><%= article.title %></strong></h2>
 
 <p><%= article.content %></p>
 
+<hr>
+<% if !article.tag.blank? %>
+	<p>Tags:
+	<%= link_to Movie.find(article.tag).title, movie_path(article.tag), :class => "btn btn-info btn-xs" %></p>
+<%end%>
+
 <% if user_signed_in? %>
 
-	<% if article.user_id == current_user.id%>	
-
+	<% if article.user_id == current_user.id%>
+		<%= link_to 'Delete Article', article_path(article),method: :delete, data: { confirm: 'Are you sure you want to delete '+article.title+'?' } , :class => "btn btn-danger btn-sm"  %>
 	<%end%>
 
 <%end%>
 
 <p> <%=User.find(article.user_id).name%> at <%=article.created_at.to_time.strftime('%B %e %l:%M %p')%> </p>
+
+</div>
 <br>
-
-

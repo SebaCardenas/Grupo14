@@ -2,6 +2,22 @@ class MoviesController < ApplicationController
   load_and_authorize_resource
   before_action :define_variables, only: [:index, :show]
 
+  def hello
+    @movie = Movie.find(params[:movie_id])
+    to_find = current_user.watchedseries
+    answer = ""
+    if to_find.nil?
+      answer = @movie.id.to_s + ','
+    else
+      answer = to_find.to_s + @movie.id.to_s + ','
+    end
+
+    current_user.update_attribute :watchedseries, answer
+
+    redirect_to movie_path(@movie)
+  end
+
+
   def index
 
     if params[:search]
@@ -67,21 +83,37 @@ class MoviesController < ApplicationController
     @categories = Category.all.map { |c| [c.name, c.id] }
   end
 
-  def create
 
+
+  def create
     #@movie.user_id = current_user.id
     #@movie = Movie.new(movie_params)
+    @movie.creator = current_user.id
     @movie.category_id = params[:category_id]
     puts @movie.movie_img_file_name
      if @movie.movie_img_file_name.blank?
        redirect_to new_movie_path, :alert => "ERROR: Debe agregar una imagen"
+
+     elsif @movie.n_chapter.blank? || @movie.n_chapter <= 0
+       redirect_to new_movie_path, :alert => "ERROR: Número de capitulos debe ser mayor a 1"
+
+     elsif @movie.n_season.blank? ||@movie.n_season <= 0
+       redirect_to new_movie_path, :alert => "ERROR: Número de temporadas debe ser mayor a 1"
+
+     elsif @movie.start_year.blank?
+       redirect_to new_movie_path, :alert => "ERROR: Debe ingresar un año de inicio"
+
+     elsif !@movie.finish_year.nil?
+      if @movie.start_year > @movie.finish_year
+        redirect_to new_movie_path, :alert => "ERROR: El año no puede ser mayor que el año de inicio"
+      end
      else
 
       if @movie.save
         redirect_to @movie
 
       else
-        render 'new'
+        render '_form'
       end
     end
 
@@ -130,7 +162,7 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit( :title, :description, :country,
       :language, :actor, :director, :n_chapter, :n_season, :start_year,
-      :finish_year, :date_update, :creator, :category_id, :movie_img)
+      :finish_year, :date_update, :creator, :category_id, :movie_img, :chapter_id)
     end
 
 end

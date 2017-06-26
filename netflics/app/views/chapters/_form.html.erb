@@ -1,0 +1,13 @@
+
+<%= simple_form_for ([@movie, @movie.chapters.build]) do |f| %>
+
+  <%= f.input :title, label: "Title" %>
+  <%= f.input :duration, label: "Duration (Min)", collection: 1..300 %>
+  <%= f.input :season, label: "Season Number", collection: 1..@movie.n_season %>
+
+
+  <%= f.button :submit,  "Create Chapter", :class => "btn btn-primary"  %>
+<% end %>
+
+ <br>
+<%= link_to 'Back to index', movie_path(@movie), :class => "btn btn-info"  %>
