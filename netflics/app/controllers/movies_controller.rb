@@ -6,7 +6,6 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     to_find = current_user.watchedseries
     answer = ""
-    puts "hOALASOIAJSAJSLAKJSLAKSJAKLSJLAKSJAJKSKJLSKLSJKL"
     if to_find.nil?
       answer = @movie.id.to_s + ','
     else
@@ -104,9 +103,10 @@ class MoviesController < ApplicationController
      elsif @movie.start_year.blank?
        redirect_to new_movie_path, :alert => "ERROR: Debe ingresar un año de inicio"
 
-     elsif @movie.start_year > @movie.finish_year
-       redirect_to new_movie_path, :alert => "ERROR: El año no puede ser mayor que el año de inicio"
-       
+     elsif !@movie.finish_year.nil?
+      if @movie.start_year > @movie.finish_year
+        redirect_to new_movie_path, :alert => "ERROR: El año no puede ser mayor que el año de inicio"
+      end
      else
 
       if @movie.save

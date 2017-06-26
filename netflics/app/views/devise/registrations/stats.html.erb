@@ -23,13 +23,14 @@
  	<h3>Total Time Spent:</h3>
 		<%total = 0%>
 		<% Movie.all.each  do  |m|%>
-			<% if current_user.watchedseries.split(",").include?(m.id.to_s)%>
+			<% if !current_user.watchedseries.blank? && current_user.watchedseries.split(",").include?(m.id.to_s)%>
 				<% m.chapters.each do |c|%>
 					<%total += c.duration%>
 				<%end%>
 			<%else%>
 				<% m.chapters.each do |c|%>
-					<%if current_user.watchedchapters.split(",").include?(c.id.to_s)%>
+
+					<%if !current_user.watchedchapters.blank? && current_user.watchedchapters.split(",").include?(c.id.to_s)%>
 						<%total += c.duration%>
 					<%end%>
 				<%end%>

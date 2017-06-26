@@ -48,7 +48,7 @@ class ChaptersController < ApplicationController
   def update
     @chapter = Chapter.find(params[:id])
     @chapter.update_attributes(chapter_params)
-    redirect_to movies_path
+    redirect_to movie_chapters_path
   end
 
   def create
@@ -68,7 +68,7 @@ class ChaptersController < ApplicationController
     else
 
       if @chapter.save
-          redirect_to movie_path(@movie)
+          redirect_to movie_chapters_path
       else
         render 'new'
       end
