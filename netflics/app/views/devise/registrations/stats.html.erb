@@ -1,19 +1,20 @@
+<% if user_signed_in? %>
 <div class="col-md-6 col-md-offset-3">
      <h1><%= resource_name.to_s.humanize %> Statistics</h1>
 
      <h3>Already seen series:</h3>
      <%if !current_user.watchedseries.blank?%>
 		<% current_user.watchedseries.split(",").each  do  |s|%>
-          	<p><%=Movie.find(s).title%></p>           
+          	<p><%=Movie.find(s).title%></p>
 	    <%end%>
-    <%else%>			
+    <%else%>
 		<p>None</p>
     <%end%>
 
  	<h3>Incomplete series:</h3>
     <%if !current_user.watchedchapters.blank?%>
 		<% current_user.watchedchapters.split(",").each  do  |s|%>
-          	<p><%=Chapter.find(s)%></p>           
+          	<p><%=Chapter.find(s).movie.title%></p>
 	    <%end%>
     <%else%>
 		<p>None</p>
@@ -39,7 +40,9 @@
 
 	<h3>
     Download:
-  	<%= link_to "CSV", users_path(format: "csv") %> 
+  	<%= link_to "CSV", users_path(format: "csv") %>
 	</h3>
     </div>
 </div>
+
+<%end%>

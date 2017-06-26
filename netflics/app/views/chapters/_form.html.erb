@@ -2,7 +2,8 @@
 <%= simple_form_for ([@movie, @movie.chapters.build]) do |f| %>
 
   <%= f.input :title, label: "Title" %>
-  <%= f.input :duration, label: "Duration" %>
+  <%= f.input :duration, label: "Duration (Min)" %>
+  <%= f.input :season, label: "Number of Seasons" %>
   <%= f.button :submit,  "Create Chapter", :class => "btn btn-primary"  %>
 <% end %>
 
